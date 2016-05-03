@@ -17,9 +17,8 @@ public class Contenedor
    /**
     * Constructor para Contenedor sin parámetros
     * @throws PersonaException
-    * @throws Exception
     */
-   public Contenedor() throws PersonaException, Exception
+   public Contenedor() throws PersonaException 
    {
         // initialise instance variables
         listadoEjecutivo = new ArrayList<Ejecutivo>();

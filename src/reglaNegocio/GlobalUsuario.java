@@ -1,3 +1,4 @@
+
 package reglaNegocio;
 import excepciones.*;
 /**
@@ -7,7 +8,6 @@ import excepciones.*;
  * @version 1.0 ==> 14-04-2016
  */
 
-public interface GlobalUsuario 
-{
+public interface GlobalUsuario {
     public boolean login() throws Exception;
 }

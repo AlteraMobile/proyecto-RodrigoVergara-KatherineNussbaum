@@ -1,8 +1,10 @@
+
 package reglaNegocio;
-import enumeraciones.*;
-import persistencia.*;
-import excepciones.*;
-import java.util.*;
+
+import enumeraciones.Rol;
+import excepciones.PersonaException;
+import java.util.Iterator;
+import persistencia.Contenedor;
 
 /**
  * Clase Ejecutivo 
@@ -10,53 +12,56 @@ import java.util.*;
  * @author Katherine Nussbaum - Rodrigo Vergara
  * @version 1.0 ==> 14-04-2016 
  */
-public class Ejecutivo extends Persona
-{
+public class Ejecutivo extends Persona {
+    /*
+    * ====================================
+    * Variables
+    * ====================================
+    */
     private boolean obsoleto;
     private String sucursal;
     
+    /*
+    * ====================================
+    * Constructores
+    * ====================================
+    */
     /**
-     * Constructor sin parámetros para Ejecutivo
+     * Constructor para Ejecutivo sin parámetros
      * @throws PersonaException
-     * @throws Exception
      */
-    Ejecutivo() throws PersonaException, Exception
-    {
+    Ejecutivo() throws PersonaException {
         super();
-        setObsoleto( false );
-        setSucursal( "Santiago" );
+        setObsoleto(false);
+        setSucursal("Santiago");
     }
     
     /**
-     * Cosntructor para Ejecutivo con dos parámetros
-     * @param usuario String
-     * @param password String
+     * Constructor para Ejecutivo con dos parámetros
+     * @param usuario
+     * @param password
      * @throws PersonaException
-     * @throws Exception
      */
-    Ejecutivo( String usuario, String password ) throws PersonaException, Exception
-    {
-        super( usuario, password );
-        setObsoleto( false );
-        setSucursal( "Santiago" );
+    public Ejecutivo(String usuario, String password) throws PersonaException{
+        super(usuario, password);
+        setObsoleto(false);
+        setSucursal("Santiago");
     }
-
+    
     /**
-     * Constructor para Ejecutivo con parámetros
-     *  @param rut String
-     *  @param dv char
-     *  @param nombre String
-     *  @param apellido String
-     *  @param usuario String
-     *  @param password String
-     *  @param sucursal String
-     *  @param rol Rol
-     *  @param esAdmin boolean
-     *  @throws PersonaException
-     *  @throws Exception
+     * Constructor para Ejecutivo con todos los parámetros
+     * @param rut
+     * @param dv
+     * @param nombre
+     * @param apellido
+     * @param usuario
+     * @param password
+     * @param sucursal
+     * @param rol
+     * @param esAdmin
+     * @throws PersonaException
      */
-    public Ejecutivo( String rut, char dv, String nombre, String apellido, String usuario, String password, String sucursal, Rol rol, boolean esAdmin ) throws PersonaException, Exception
-    {
+    public Ejecutivo(String rut, char dv, String nombre, String apellido, String usuario, String password, String sucursal, Rol rol, boolean esAdmin) throws PersonaException {
         setRut( rut );
         setDv( dv );
         setNombre( nombre );
@@ -67,81 +72,78 @@ public class Ejecutivo extends Persona
         setRol( rol );
         setEsAdmin( esAdmin );
         setObsoleto( false );
-        
     }
     
+    /*
+    * ====================================
+    * Accesadores
+    * ====================================
+    */
     /**
      * Accesador para obsoleto
-     * @return boolean obsoleto
+     * @return boolean
      */
-    public boolean getObsoleto()
-    {
-        return this.obsoleto;
+    public boolean getObsoleto() {
+        return obsoleto;
     }
-    
+
     /**
      * Accesador para sucursal
-     * @return String sucursal
+     * @return String
      */
-    public String getSucursal()
-    {
-        return this.sucursal;
+    public String getSucursal() {
+        return sucursal;
     }
     
+    /*
+    * ====================================
+    * Mutadores
+    * ====================================
+    */
     /**
-     * Mutador para obsoleto 
-     * @param obsoleto boolean
+     * Mutador para obsoleto
+     * @param obsoleto 
      */
-    public void setObsoleto( boolean obsoleto )
-    {
+    private void setObsoleto(boolean obsoleto) {
         this.obsoleto = obsoleto;
     }
     
     /**
      * Mutador para sucursal
-     * @param sucursal String
+     * @param sucursal 
      */
-    public void setSucursal( String sucursal )
-    {
+    private void setSucursal(String sucursal) {
         this.sucursal = sucursal;
     }
 
+    /*
+    * ====================================
+    * Métodos personalizados
+    * ====================================
+    */
     /**
-     * Método de sobreescritura toString
-     * @return String
-     */
-    @Override
-    public String toString()
-    {
-        return super.toString() + ", Obsoleto: " + getObsoleto() + ", Sucursal: " + getSucursal();
-    }
-
-    /**
-     * Método implementado desde GlobalUsuario
+     * Método de sobreescritura, implementado desde GlobalUsuario
      * @return boolean
      * @throws PersonaException
-     * @throws Exception
      */
     @Override
-    public boolean login() throws PersonaException, Exception
-    {
+    public boolean login() throws PersonaException {
+        
         boolean retorno = false;
         Contenedor contenedor = new Contenedor();
         Iterator existe = contenedor.listadoEjecutivos().iterator();
-        while( existe.hasNext() )
-        {
+        
+        while(existe.hasNext()){
             Ejecutivo ejecutivoTmp;
-            ejecutivoTmp = ( Ejecutivo )existe.next();
+            ejecutivoTmp = (Ejecutivo)existe.next();
             
-            if( getUsuario().equals( ejecutivoTmp.getUsuario() ) 
-             && getPassword().equals( ejecutivoTmp.getPassword() ) 
-             && ejecutivoTmp.getObsoleto() == false )
-            {
-                retorno = true;
+            if(getUsuario().equals(ejecutivoTmp.getUsuario())
+                    && getPassword().equals(ejecutivoTmp.getPassword())
+                    && ejecutivoTmp.getObsoleto() == false){
+                retorno =  true;
                 break;
             }
-            else
-            {
+            else{
                 retorno = false;
             }
         }
@@ -149,30 +151,27 @@ public class Ejecutivo extends Persona
     }
     
     /**
-     * Método que rescata rol y mostrarlo
+     * Método que rescata rol u lo muestra
      * @return String
      * @throws PersonaException
-     * @throws Exception
      */
-    public String rescatarPerfil() throws PersonaException, Exception
-    {
+    public String rescatarPerfil() throws PersonaException {
+        
         String muestraPerfil;
         
-        if( login()== true )
-        {
-           muestraPerfil = getRol().getPerfil();
-        
-           if( muestraPerfil.equals("Administrador") )
-           {
-               setEsAdmin( true );                
-           }
-           else
-           {
-               setEsAdmin( false ); 
-           }
-           return muestraPerfil;
+        if(login() == true){
+            muestraPerfil = getRol().getPerfil();
+            
+            if(muestraPerfil.equals("Administrador")){
+                setEsAdmin(true);
+            }
+            else{
+                setEsAdmin(false);
+            }
+            return muestraPerfil;
         }
-        
-        return "error en rescatar el perfil";
+        else {
+            return "error en rescatar el perfil";
+        }
     }
 }

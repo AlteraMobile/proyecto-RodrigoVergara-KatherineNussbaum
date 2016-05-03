@@ -1,6 +1,8 @@
+
 package reglaNegocio;
-import enumeraciones.*;
-import excepciones.*;
+
+import enumeraciones.Rol;
+import excepciones.PersonaException;
 
 /**
  * Clase Abstracta Persona
@@ -9,8 +11,12 @@ import excepciones.*;
  * @version 1.0 ==> 14-04-2016 
  */
 
-public abstract class Persona implements GlobalUsuario
-{
+public abstract class Persona implements GlobalUsuario {
+    /*
+    * ====================================
+    * Variables
+    * ====================================
+    */
     private String rut;
     private char dv;
     private String nombre;
@@ -19,14 +25,18 @@ public abstract class Persona implements GlobalUsuario
     private String password;
     private Rol rol;
     private boolean esAdmin;
-        
+    
+    /*
+    * ====================================
+    * Constructores
+    * ====================================
+    */
     /**
      * Constructor para Persona sin parámetros
-     * @throws PersonaException
-     * @throws Exception
+     * @throws PersonaException 
      */
-    Persona() throws PersonaException, Exception
-    {
+    
+    Persona() throws PersonaException {
         setRut( "15258964" );
         setDv( '1' );
         setNombre( "Constanza" );
@@ -36,16 +46,14 @@ public abstract class Persona implements GlobalUsuario
         setRol( Rol.PERSONAL );
         setEsAdmin( false );
     }
-    
+
     /**
      * Constructor para Persona con dos parámetros
-     * @param usuario String
-     * @param password String
-     * @throws PersonaException
-     * @throws Exception
+     * @param usuario
+     * @param password
+     * @throws PersonaException 
      */
-    Persona( String usuario, String password ) throws PersonaException, Exception
-    {
+    Persona(String usuario, String password) throws PersonaException {
         setRut( "15258964" );
         setDv( '1' );
         setNombre( "Constanza" );
@@ -55,22 +63,20 @@ public abstract class Persona implements GlobalUsuario
         setRol( Rol.PERSONAL );
         setEsAdmin( false );
     }
-
+    
     /**
-     * Constructor para Persona con parámetros
-     * @param rut String
-     * @param dv char
-     * @param nombre String
-     * @param apellido String
-     * @param usuario String
-     * @param password String
-     * @param rol Rol
-     * @param esAdmin boolean
+     * Constructor para Persona con todos los parámetros
+     * @param rut
+     * @param dv
+     * @param nombre
+     * @param apellido
+     * @param usuario
+     * @param password
+     * @param rol
+     * @param esAdmin
      * @throws PersonaException
-     * @throws Exception
      */
-    Persona( String rut, char dv, String nombre, String apellido, String usuario, String password, Rol rol, boolean esAdmin ) throws PersonaException, Exception
-    {
+    Persona(String rut, char dv, String nombre, String apellido, String usuario, String password, Rol rol, boolean esAdmin) throws PersonaException {
         setRut( rut );
         setDv( dv );
         setNombre( nombre );
@@ -81,288 +87,230 @@ public abstract class Persona implements GlobalUsuario
         setEsAdmin( esAdmin );
     }
     
+    /*
+    * ====================================
+    * Accesadores
+    * ====================================
+    */
     /**
      * Accesador para rut
-     * @return String rut
+     * @return String
      */
-    public String getRut()
-    {
-        return this.rut;
+     public String getRut() {
+        return rut;
     }
     
     /**
      * Accesador para dv
-     * @return char dv
+     * @return char
      */
-    public char getDv()
-    {
-        return this.dv;
+    public char getDv() {
+        return dv;
     }
-    
+
     /**
      * Accesador para nombre
-     * @return String nombre
+     * @return String
      */
-    public String getNombre()
-    {
-        return this.nombre;
+    public String getNombre() {
+        return nombre;
     }
-    
+
     /**
-     * Accesador para apellido
-     * @return String apellido
+     * Accesador para Apellido
+     * @return String
      */
-    public String getApellido()
-    {
-        return this.apellido;
+    public String getApellido() {
+        return apellido;
     }
-    
+
     /**
      * Accesador para usuario
-     * @return String usuario
+     * @return String
      */
-    public String getUsuario()
-    {
-        return this.usuario;
+    public String getUsuario() {
+        return usuario;
     }
-    
+
     /**
      * Accesador para password
-     * @return String password
+     * @return String
      */
-    public String getPassword()
-    {
-        return this.password;
-    }
-    
-    /**
-     * Accesador para esAdmin
-     * @return  boolean esAdmin
-     */
-    public boolean getEsAdmin()
-    {
-        return this.esAdmin;
+    public String getPassword() {
+        return password;
     }
     
     /**
      * Accesador para rol
-     * @return Rol rol
+     * @return Rol
      */
-    public Rol getRol()
-    {
-        return this.rol;
-    }
-    
-    /**
-     * Mutador para rut
-     * @param rut String
-     * @throws PersonaException
-     * @throws Exception
-     */
-    public void setRut( String rut ) throws PersonaException, Exception
-    {
-        try
-        {
-            if ( rut.trim().length() >= 3 && rut.trim().length() < 9 )
-            {
-                this.rut = rut; 
-            }
-            else
-            {
-                throw new PersonaException( "Rut ingresado es inválido." );
-            }
-        }
-        catch ( NullPointerException ex )
-        {
-            throw new NullPointerException ( "Rut no puede ser null." );
-        }
-        catch ( Exception ex )
-        {
-            throw new Exception( "Se produjo un error: " + ex.getMessage() );
-        }
-    }
-    
-    /**
-     * Mutador para dv
-     * @param char dv
-     * @throws Exception
-     */
-    public void setDv( char dv ) throws Exception
-    {
-        try
-        {
-            this.dv = dv;
-        }
-        catch (NullPointerException ex)
-        {
-            throw new NullPointerException( "El digito verificador ingresado no puede ser null." );
-        }
-        catch( Exception ex )
-        {
-            throw new Exception( "Se produjo un error: " + ex.getMessage() );
-        }
-    }
-    
-    /**
-     * Mutador para nombre
-     * @param nombre String
-     * @throws PersonaException
-     * @throws Exception
-     */
-    public void setNombre( String nombre ) throws PersonaException, Exception
-    {
-        try
-        {
-            if ( nombre.trim().length() >= 0 && nombre.trim().length() <= 45 )
-            {
-                this.nombre = nombre;   
-            }
-            else
-            {
-                throw new PersonaException( "Nombre ingresado es inválido." );
-            }
-        }
-        catch ( NullPointerException ex )
-        {
-            throw new NullPointerException( "El nombre ingresado no puede ser null." );
-        }
-        catch ( Exception ex )
-        {
-            throw new Exception( "Se produjo un error: " + ex.getMessage() );
-        }
-    }
-    
-    /**
-     * Mutador para apellido
-     * @param apellido String
-     * @throws PersonaException
-     * @throws Exception
-     */
-    public void setApellido( String apellido ) throws PersonaException, Exception
-    {
-        try
-        {
-            if (apellido.trim().length() >= 0 && apellido.trim().length() <= 30 )
-            {
-                this.apellido = apellido;   
-            }
-            else
-            {
-                throw new PersonaException( "Apellido ingresado es inválido." );
-            }
-        }
-        catch ( NullPointerException ex )
-        {
-            throw new NullPointerException( "El apellido no puede ser null." );
-        }
-        catch ( Exception ex )
-        {
-            throw new Exception( "Se produjo un error: " + ex.getMessage() );
-        }
-    }
-    
-    /**
-     * Mutador para usuario
-     * @param usuario String
-     * @throws PersonaException
-     * @throw Exception
-     */
-    public void setUsuario( String usuario ) throws PersonaException, Exception
-    {
-        try
-        {
-            if ( usuario.trim().length() > 3 )
-            {
-                this.usuario = usuario; 
-            }
-            else
-            {
-                throw new PersonaException( "Usuario ingresado es inválido." );
-            }
-        }
-        catch ( PersonaException ex )
-        {
-            throw new PersonaException( "El usuario ingresado es inválido." );
-        }
-        catch ( Exception ex )
-        {
-            throw new Exception( "Se produjo un error." + ex.getMessage() );
-        }
-    }
-    
-    /**
-     * Mutador para password
-     * @param password String
-     * @throws PersonaException
-     * @thorws Exception
-     */
-    public void setPassword( String password ) throws PersonaException, Exception
-    {
-        try
-        {
-            if ( password.trim().length() > 3 )
-            {
-                this.password = password;   
-            }
-            else
-            {
-                throw new PersonaException( "Password ingresado es inválido." );
-            }
-        }
-        catch ( PersonaException ex )
-        {
-            throw new PersonaException( "El password ingresado es inválido." );
-        }
-        catch ( Exception ex )
-        {
-            throw new Exception( "Se produjo un error: " + ex.getMessage() );
-        }
-    }
-    
-    /**
-     * Mutador para esAdmin
-     * @param esAdmin boolean
-     */
-    public void setEsAdmin( boolean esAdmin )
-    {
-         this.esAdmin = esAdmin;
-     }
-    
-    /**
-     * Mutador para rol
-     * @param rol Rol
-     * @throws Exception
-     */
-    public void setRol( Rol rol ) throws Exception
-    {
-        if(rol!=null)
-        {
-            this.rol = rol;
-        } 
-        else
-        {
-            throw new NullPointerException( "El Rol ingresado no puede ser null." );
-        }
-        }
-    
-    
-    /**
-     * Método de sobreescritura toString
-     * @return String
-     */
-    public String toString()
-    {
-        return "Rut: " + getRut() + "-" + getDv() + ", Nombre: " + getNombre() + ", Apellido: " + getApellido() + ", Usuario: " + getUsuario() + ", Password: " + getPassword() + ", esAdmin: " + getEsAdmin() + rol.toString() ; 
+    public Rol getRol() {
+        return rol;
     }
 
     /**
-     * Método implementado desde GlobalUsuario
+     * Accesador para esAdmin
+     * @return boolean
+     */
+    public boolean getEsAdmin() {
+        return esAdmin;
+    }
+    
+    /*
+    * ====================================
+    * Mutadores
+    * ====================================
+    */
+    /**
+     * Mutador para rut
+     * @param rut
+     * @throws PersonaException 
+     */
+    public void setRut(String rut) throws PersonaException {
+        try{
+            if(rut.trim().length() >= 3 && rut.trim().length() < 9){
+                this.rut = rut;
+            }
+            else{
+                throw new PersonaException("Rut ingresado es inválido.");
+            }
+        }
+        catch(NullPointerException ex){
+            throw new NullPointerException("Rut no puede ser null.");
+        }
+    }
+
+    /**
+     * Mutador para dv
+     * @param dv
+     */
+    public void setDv(char dv) {
+        try{
+            this.dv = dv;
+        }
+        catch(NullPointerException ex){
+            throw new NullPointerException("El digito verificador ingresado no puede ser null.");
+        }
+    }
+
+    /**
+     * Mutador para nombre
+     * @param nombre
+     * @throws PersonaException 
+     */
+    public void setNombre(String nombre) throws PersonaException {
+       try{
+           if(nombre.trim().length() >= 0 && nombre.trim().length() <= 45){
+               this.nombre = nombre;
+           }
+           else{
+               throw new PersonaException("Nombre ingresado es inválido.");
+           }
+       }
+       catch(NullPointerException ex){
+           throw new NullPointerException("El nombre ingresado no puede ser null.");
+       }
+    }
+
+    /**
+     * Mutador para apellido
+     * @param apellido
+     * @throws PersonaException
+     */
+    public void setApellido(String apellido) throws PersonaException {
+        try{
+            if(apellido.trim().length() >= 0 && apellido.trim().length() <= 30){
+                this.apellido = apellido;
+            }
+            else{
+                throw new PersonaException("Apellido ingresado es inválido.");
+            }
+        }
+        catch(NullPointerException ex){
+            throw new NullPointerException("El apellido no puede ser null.");
+        }
+    }
+
+    /**
+     * Mutador para usuario
+     * @param usuario
+     * @throws PersonaException
+     */
+    public void setUsuario(String usuario) throws PersonaException {
+        try{
+            if(usuario.trim().length() > 3){
+                this.usuario = usuario;
+            }
+            else{
+                throw new PersonaException("Usuario ingresado es inválido.");
+            }
+        }
+        catch(NullPointerException ex){
+            throw new NullPointerException("El usuario ingresado no puede ser null.");
+        }
+    }
+
+    /**
+     * Mutador para password
+     * @param password
+     * @throws PersonaException
+     */
+    public void setPassword(String password) throws PersonaException {
+        try{
+            if(password.trim().length() > 3){
+                this.password = password;
+            }
+            else{
+                throw new PersonaException("Password ingresado es inválido.");
+            }
+        }
+        catch(NullPointerException ex){
+            throw new NullPointerException("El password ingresado no puede ser null.");
+        }
+    }
+
+    /**
+     * Mutador para rol
+     * @param rol
+     */
+    public void setRol(Rol rol) {
+         if(rol != null){
+             this.rol = rol;
+         }
+         else{
+             throw new NullPointerException("El Rol ingresado no puede ser null.");
+         }
+    }
+
+    /**
+     * Mutador para esAdmin
+     * @param esAdmin 
+     */
+    public void setEsAdmin(boolean esAdmin) {
+        this.esAdmin = esAdmin;
+    }
+
+    /*
+    * ====================================
+    * Métodos Personalizados
+    * ====================================
+    */
+    /**
+     * Método de sobre escritura to String
+     * @return String
+     */
+    @Override
+    public String toString(){
+        return "Rut: " + getRut() + "-" + getDv() + ", Nombre: " + getNombre() + ", Apellido: " + getApellido() + ", Usuario: " + getUsuario() + ", Password: " + getPassword() + ", esAdmin: " + getEsAdmin() + rol.toString();
+    }
+    
+    /**
+     *Método de sobreescritura, implementado desde GlobalUsuario
      * @return boolean
      * @throws Exception
      */
     @Override
-    public boolean login() throws Exception
-    {
+    public boolean login() throws Exception{
         return false;
     }
 }

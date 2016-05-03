@@ -6,39 +6,33 @@ package enumeraciones;
  * @author Katherine Nussbaum - Rodrigo Vergara
  * @version 1.0 ==> 14-04-2016
  */
-public enum Rol
-{
-    
+public enum Rol {
     ADMIN("Administrador"),
     PERSONAL("Ejecutivo");
     
     private String perfil;
     
-        
     /**
      * Constructor para Rol privado con parámetro
      * @param perfil String
      */
-    private Rol( String perfil )
-    {
-        setPerfil( perfil );
+    private Rol(String perfil){
+        setPerfil(perfil);
     }
     
     /**
      * Accesador para perfil
-     * @return String perfil
+     * @return String
      */
-    public String getPerfil()
-    {
+    public String getPerfil(){
         return this.perfil;
     }
-    
+
     /**
      * Mutador para perfil
-     * @param perfil String
+     * @param perfil
      */
-    public void setPerfil( String perfil )
-    {
+    private void setPerfil(String perfil) {
         this.perfil = perfil;
     }
     
@@ -47,8 +41,7 @@ public enum Rol
      * @return String
      */
     @Override
-    public String toString()
-    {
+    public String toString(){
         return "Rol: " + this.name() + ", Perfil: " + getPerfil();
-    }
+    }         
 }
