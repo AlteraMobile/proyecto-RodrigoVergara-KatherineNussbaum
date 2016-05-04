@@ -13,19 +13,10 @@ import persistencia.Contenedor;
  * @version 1.0 ==> 14-04-2016 
  */
 public class Ejecutivo extends Persona {
-    /*
-    * ====================================
-    * Variables
-    * ====================================
-    */
+
     private boolean obsoleto;
     private String sucursal;
-    
-    /*
-    * ====================================
-    * Constructores
-    * ====================================
-    */
+
     /**
      * Constructor para Ejecutivo sin parámetros
      * @throws PersonaException
@@ -47,7 +38,19 @@ public class Ejecutivo extends Persona {
         setObsoleto(false);
         setSucursal("Santiago");
     }
-    
+    public Ejecutivo(String rut, char dv, String nombre, String apellido, String usuario, String password) throws PersonaException{
+        setRut( rut );
+        setDv( dv );
+        setNombre( nombre );
+        setApellido( apellido );
+        setUsuario( usuario );
+        setPassword( password );
+        setSucursal("Santiago");
+        setRol( Rol.PERSONAL );
+        setEsAdmin( false );
+        setObsoleto( false );
+        
+    }
     /**
      * Constructor para Ejecutivo con todos los parámetros
      * @param rut
@@ -74,11 +77,7 @@ public class Ejecutivo extends Persona {
         setObsoleto( false );
     }
     
-    /*
-    * ====================================
-    * Accesadores
-    * ====================================
-    */
+
     /**
      * Accesador para obsoleto
      * @return boolean
@@ -94,12 +93,7 @@ public class Ejecutivo extends Persona {
     public String getSucursal() {
         return sucursal;
     }
-    
-    /*
-    * ====================================
-    * Mutadores
-    * ====================================
-    */
+
     /**
      * Mutador para obsoleto
      * @param obsoleto 
@@ -116,11 +110,6 @@ public class Ejecutivo extends Persona {
         this.sucursal = sucursal;
     }
 
-    /*
-    * ====================================
-    * Métodos personalizados
-    * ====================================
-    */
     /**
      * Método de sobreescritura, implementado desde GlobalUsuario
      * @return boolean
@@ -151,7 +140,8 @@ public class Ejecutivo extends Persona {
     }
     
     /**
-     * Método que rescata rol u lo muestra
+     * Método que rescata rol y lo muestra
+     * 
      * @return String
      * @throws PersonaException
      */
@@ -173,5 +163,9 @@ public class Ejecutivo extends Persona {
         else {
             return "error en rescatar el perfil";
         }
+    }
+    
+    public void agregarEjecutivoFormulario(){
+        
     }
 }

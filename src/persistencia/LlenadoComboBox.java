@@ -16,7 +16,6 @@ public class  LlenadoComboBox{
     public LlenadoComboBox(){
         listaColor = new ArrayList<>();
         listaMarca = new ArrayList<>();
-
     }
     
     public ArrayList llenadoColor(){
@@ -31,6 +30,7 @@ public class  LlenadoComboBox{
         listaMarca.add("Audi");
         listaMarca.add("Volkswagen");
         listaMarca.add("Fiat");
+        listaMarca.add("Honda");
         return listaMarca;
     }
     

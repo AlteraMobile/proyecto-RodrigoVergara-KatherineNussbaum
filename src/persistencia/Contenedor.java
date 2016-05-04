@@ -34,4 +34,8 @@ public class Contenedor
    public ArrayList listadoEjecutivos(){
         return listadoEjecutivo ;    
     }
+   
+   public void agregarEjecutivo(String rut, char dv, String nombre, String apellido, String usuario, String password) throws PersonaException{
+       listadoEjecutivo.add(new Ejecutivo(rut, dv, nombre, apellido, usuario, password));
+   }
 }
