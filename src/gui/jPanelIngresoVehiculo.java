@@ -1,4 +1,9 @@
 
+package gui;
+
+import persistencia.LlenadoComboBox;
+
+
 
 
 /**
@@ -12,6 +17,10 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
      */
     public jPanelIngresoVehiculo() {
         initComponents();
+        cbbxMarca.removeAll();
+        new LlenadoComboBox().cargaComboBoxColor(cbbxColor);
+        new LlenadoComboBox().cargaComboBoxColor(cbbxMarca);
+        
     }
 
     /**
@@ -52,10 +61,6 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
         lblColor.setText("Color:");
 
         lblAnio.setText("Año:");
-
-        cbbxMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbbxColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblModelo.setText("Modelo:");
 
@@ -114,18 +119,21 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
                                 .addComponent(rdbtnUsado)
                                 .addGap(18, 18, 18)
                                 .addComponent(rdbtnNuevo))
+                            .addComponent(txtPuertas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblPatente)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPatente, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                                .addContainerGap())
-                            .addComponent(txtPuertas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnGuardar)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblPatente)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtPatente, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)))
+                                .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGuardar)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -167,6 +175,7 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_rdbtnUsadoActionPerformed
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;

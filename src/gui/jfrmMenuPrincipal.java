@@ -32,6 +32,7 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
         jPanelPrincipal = new javax.swing.JPanel();
         jMenuBarPrincipal = new javax.swing.JMenuBar();
         btnVentas = new javax.swing.JMenu();
+        mnVenta = new javax.swing.JMenuItem();
         btnRegistros = new javax.swing.JMenu();
         btnAdministrcion = new javax.swing.JMenu();
         btnIngresoEjecutivo = new javax.swing.JMenuItem();
@@ -58,6 +59,15 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
         );
 
         btnVentas.setText("Ventas");
+
+        mnVenta.setText("Venta");
+        mnVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnVentaActionPerformed(evt);
+            }
+        });
+        btnVentas.add(mnVenta);
+
         jMenuBarPrincipal.add(btnVentas);
 
         btnRegistros.setText("Registros");
@@ -111,6 +121,11 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
         cambioPanel(ingresoEjecutivo);
     }//GEN-LAST:event_btnIngresoEjecutivoActionPerformed
 
+    private void mnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVentaActionPerformed
+        // TODO add your handling code here:
+        cambioPanel(new jPanelIngresoVehiculo());
+    }//GEN-LAST:event_mnVentaActionPerformed
+
     public void cambioPanel(JPanel panel){
         jPanelPrincipal.removeAll();
         jPanelPrincipal.setSize(700, 500);
@@ -163,5 +178,6 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu btnVentas;
     private javax.swing.JMenuBar jMenuBarPrincipal;
     private javax.swing.JPanel jPanelPrincipal;
+    private javax.swing.JMenuItem mnVenta;
     // End of variables declaration//GEN-END:variables
 }
