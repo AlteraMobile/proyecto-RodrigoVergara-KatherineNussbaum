@@ -18,8 +18,9 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
     public jPanelIngresoVehiculo() {
         initComponents();
         cbbxMarca.removeAll();
+        cbbxColor.removeAll();
         new LlenadoComboBox().cargaComboBoxColor(cbbxColor);
-        new LlenadoComboBox().cargaComboBoxColor(cbbxMarca);
+        new LlenadoComboBox().cargaComboBoxMarca(cbbxMarca);
         
     }
 
