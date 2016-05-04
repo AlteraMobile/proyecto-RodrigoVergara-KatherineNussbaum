@@ -18,6 +18,7 @@ public class jfrmLogin extends javax.swing.JFrame {
      */
     public jfrmLogin() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -100,7 +101,12 @@ public class jfrmLogin extends javax.swing.JFrame {
             Ejecutivo ejecutivo = new Ejecutivo(usuario,password);
             
            if(ejecutivo.login()){
-               System.out.println("OK");
+               // cierro ventana Login
+               this.dispose();
+               // abre ventana MenuPrincipal
+               jfrmMenuPrincipal menu = new jfrmMenuPrincipal();
+               // ventana visible
+               menu.setVisible(true);
            }
            else{
            JOptionPane.showMessageDialog(null,"Error al iniciar sesión.");

@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gui;
 
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
 /**
  *
  * @author Katherine Nussbaum
@@ -16,6 +14,10 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
      */
     public jfrmMenuPrincipal() {
         initComponents();
+        // ventana maximizada
+        setExtendedState(jfrmMenuPrincipal.MAXIMIZED_BOTH);
+        // Quitar botones de manejo de ventana
+        setUndecorated(true);        
     }
 
     /**
@@ -28,74 +30,95 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelPrincipal = new javax.swing.JPanel();
-        jPanelIngresoEjecutivo1 = new gui.jPanelIngresoEjecutivo();
-        lblPerfilLogin = new javax.swing.JLabel();
-        lblRutLogin = new javax.swing.JLabel();
-        lblUsuarioLogin = new javax.swing.JLabel();
+        jMenuBarPrincipal = new javax.swing.JMenuBar();
+        btnVentas = new javax.swing.JMenu();
+        btnRegistros = new javax.swing.JMenu();
+        btnAdministrcion = new javax.swing.JMenu();
+        btnIngresoEjecutivo = new javax.swing.JMenuItem();
+        btnAyuda = new javax.swing.JMenu();
+        btnCerrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(248, 248, 248));
+        setType(java.awt.Window.Type.POPUP);
 
         jPanelPrincipal.setBackground(new java.awt.Color(248, 248, 248));
-        jPanelPrincipal.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "JAVACars", 2, 0, new java.awt.Font("Calibri Light", 0, 24), new java.awt.Color(102, 102, 102))); // NOI18N
+        jPanelPrincipal.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "JAVACars", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 24), new java.awt.Color(102, 102, 102))); // NOI18N
         jPanelPrincipal.setName(""); // NOI18N
 
         javax.swing.GroupLayout jPanelPrincipalLayout = new javax.swing.GroupLayout(jPanelPrincipal);
         jPanelPrincipal.setLayout(jPanelPrincipalLayout);
         jPanelPrincipalLayout.setHorizontalGroup(
             jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelIngresoEjecutivo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+            .addGap(0, 624, Short.MAX_VALUE)
         );
         jPanelPrincipalLayout.setVerticalGroup(
             jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelIngresoEjecutivo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addGap(0, 362, Short.MAX_VALUE)
         );
 
-        lblPerfilLogin.setText("PerfilLogin");
+        btnVentas.setText("Ventas");
+        jMenuBarPrincipal.add(btnVentas);
 
-        lblRutLogin.setText("RutLogin");
+        btnRegistros.setText("Registros");
+        jMenuBarPrincipal.add(btnRegistros);
 
-        lblUsuarioLogin.setText("UsuarioLogin");
+        btnAdministrcion.setText("Administración");
+
+        btnIngresoEjecutivo.setText("Ingreso Ejecutivo");
+        btnIngresoEjecutivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresoEjecutivoActionPerformed(evt);
+            }
+        });
+        btnAdministrcion.add(btnIngresoEjecutivo);
+
+        jMenuBarPrincipal.add(btnAdministrcion);
+
+        btnAyuda.setText("Ayuda");
+
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        btnAyuda.add(btnCerrar);
+
+        jMenuBarPrincipal.add(btnAyuda);
+
+        setJMenuBar(jMenuBarPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPerfilLogin)
-                        .addGap(75, 75, 75)
-                        .addComponent(lblRutLogin)
-                        .addGap(87, 87, 87)
-                        .addComponent(lblUsuarioLogin)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPerfilLogin)
-                    .addComponent(lblRutLogin)
-                    .addComponent(lblUsuarioLogin))
-                .addGap(36, 36, 36)
-                .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // salir de la aplicación
+        System.exit(0);
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnIngresoEjecutivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoEjecutivoActionPerformed
+        jPanelIngresoEjecutivo ingresoEjecutivo = new jPanelIngresoEjecutivo();
+        cambioPanel(ingresoEjecutivo);
+    }//GEN-LAST:event_btnIngresoEjecutivoActionPerformed
+
+    public void cambioPanel(JPanel panel){
+        jPanelPrincipal.removeAll();
+        jPanelPrincipal.setSize(700, 500);
+        jPanelPrincipal.setLayout(new BorderLayout());
+        jPanelPrincipal.add(panel, BorderLayout.CENTER);
+        jPanelPrincipal.revalidate();
+        jPanelPrincipal.repaint();
+    }
     /**
      * @param args the command line arguments
      */
@@ -132,10 +155,13 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private gui.jPanelIngresoEjecutivo jPanelIngresoEjecutivo1;
+    private javax.swing.JMenu btnAdministrcion;
+    private javax.swing.JMenu btnAyuda;
+    private javax.swing.JMenuItem btnCerrar;
+    private javax.swing.JMenuItem btnIngresoEjecutivo;
+    private javax.swing.JMenu btnRegistros;
+    private javax.swing.JMenu btnVentas;
+    private javax.swing.JMenuBar jMenuBarPrincipal;
     private javax.swing.JPanel jPanelPrincipal;
-    private javax.swing.JLabel lblPerfilLogin;
-    private javax.swing.JLabel lblRutLogin;
-    private javax.swing.JLabel lblUsuarioLogin;
     // End of variables declaration//GEN-END:variables
 }
