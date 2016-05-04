@@ -24,8 +24,8 @@ public class ValidacionIngresoEjecutivo {
         else if(existeUsuario(usuario)){
             JOptionPane.showMessageDialog(null, "El usuario ingresado ya existe, escoja otro.");
         }
-        else{
-             
+        else if(){
+            
         }
     }
 
