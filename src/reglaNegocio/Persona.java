@@ -12,11 +12,7 @@ import excepciones.PersonaException;
  */
 
 public abstract class Persona implements GlobalUsuario {
-    /*
-    * ====================================
-    * Variables
-    * ====================================
-    */
+
     private String rut;
     private char dv;
     private String nombre;
@@ -25,14 +21,10 @@ public abstract class Persona implements GlobalUsuario {
     private String password;
     private Rol rol;
     private boolean esAdmin;
-    
-    /*
-    * ====================================
-    * Constructores
-    * ====================================
-    */
+
     /**
      * Constructor para Persona sin parámetros
+     * 
      * @throws PersonaException 
      */
     
@@ -49,8 +41,10 @@ public abstract class Persona implements GlobalUsuario {
 
     /**
      * Constructor para Persona con dos parámetros
+     * 
      * @param usuario
      * @param password
+     * 
      * @throws PersonaException 
      */
     Persona(String usuario, String password) throws PersonaException {
@@ -66,6 +60,7 @@ public abstract class Persona implements GlobalUsuario {
     
     /**
      * Constructor para Persona con todos los parámetros
+     * 
      * @param rut
      * @param dv
      * @param nombre
@@ -74,6 +69,7 @@ public abstract class Persona implements GlobalUsuario {
      * @param password
      * @param rol
      * @param esAdmin
+     * 
      * @throws PersonaException
      */
     Persona(String rut, char dv, String nombre, String apellido, String usuario, String password, Rol rol, boolean esAdmin) throws PersonaException {
@@ -87,11 +83,6 @@ public abstract class Persona implements GlobalUsuario {
         setEsAdmin( esAdmin );
     }
     
-    /*
-    * ====================================
-    * Accesadores
-    * ====================================
-    */
     /**
      * Accesador para rut
      * @return String
@@ -155,12 +146,7 @@ public abstract class Persona implements GlobalUsuario {
     public boolean getEsAdmin() {
         return esAdmin;
     }
-    
-    /*
-    * ====================================
-    * Mutadores
-    * ====================================
-    */
+
     /**
      * Mutador para rut
      * @param rut
@@ -290,11 +276,6 @@ public abstract class Persona implements GlobalUsuario {
         this.esAdmin = esAdmin;
     }
 
-    /*
-    * ====================================
-    * Métodos Personalizados
-    * ====================================
-    */
     /**
      * Método de sobre escritura to String
      * @return String

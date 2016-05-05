@@ -38,6 +38,19 @@ public class Ejecutivo extends Persona {
         setObsoleto(false);
         setSucursal("Santiago");
     }
+
+    /**
+     * Constructor para Ejecutivo con 6 parámetros
+     * Usado para formulario de ingreso de ejecutivos nuevos
+     * 
+     * @param rut
+     * @param dv
+     * @param nombre
+     * @param apellido
+     * @param usuario
+     * @param password
+     * @throws PersonaException
+     */
     public Ejecutivo(String rut, char dv, String nombre, String apellido, String usuario, String password) throws PersonaException{
         setRut( rut );
         setDv( dv );
@@ -48,8 +61,7 @@ public class Ejecutivo extends Persona {
         setSucursal("Santiago");
         setRol( Rol.PERSONAL );
         setEsAdmin( false );
-        setObsoleto( false );
-        
+        setObsoleto( false );        
     }
     /**
      * Constructor para Ejecutivo con todos los parámetros
@@ -168,4 +180,5 @@ public class Ejecutivo extends Persona {
     public void agregarEjecutivoFormulario(){
         
     }
+
 }

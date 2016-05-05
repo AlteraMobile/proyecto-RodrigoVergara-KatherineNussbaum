@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import reglaNegocio.Ejecutivo;
 
 /**
- * Formulario Login
+ * Frame jfrmLogin
  * 
  * @author Katherine Nussbaum - Rodrigo Vergara
  * @version 2.0 ==> 05-05-2016 
@@ -14,7 +14,7 @@ import reglaNegocio.Ejecutivo;
 public class jfrmLogin extends javax.swing.JFrame {
 
     /**
-     * Creates new form jfrmLogin
+     * Constructor de jfrmLogin
      */
     public jfrmLogin() {
         initComponents();

@@ -4,10 +4,11 @@ package gui;
 import excepciones.PersonaException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import reglaNegocio.ValidacionIngresoEjecutivo;
 
 /**
- * Panel Ingreso de Ejecutivos
+ * Panel jPanelIngresoEjecutivo
  * 
  * @author Katherine Nussbaum - Rodrigo Vergara
  * @version 2.0 ==> 05-05-2016 
@@ -15,10 +16,11 @@ import reglaNegocio.ValidacionIngresoEjecutivo;
 public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
 
     /**
-     * Creates new form jPanelIngresoEjecutivo
+     * Constructor jPanelIngresoEjecutivo
      */
     public jPanelIngresoEjecutivo() {
         initComponents();
+        txtCorreo.setVisible(false);
     }
 
     /**
@@ -48,6 +50,7 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
         txtUsuario = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         txtConfirmaPassword = new javax.swing.JPasswordField();
+        txtCorreo = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
 
         lblTitulo.setText("Ingreso Ejecutivo");
@@ -69,6 +72,9 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
         lblPassword.setText("Password");
 
         lblConfirmaPassword.setText("Confirma Password");
+
+        txtCorreo.setEditable(false);
+        txtCorreo.setOpaque(false);
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +114,7 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnGuardar)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblConfirmaPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,10 +122,10 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                             .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCorreo)
                             .addComponent(txtUsuario)
                             .addComponent(txtPassword)
-                            .addComponent(txtConfirmaPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnGuardar))
+                            .addComponent(txtConfirmaPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))))
                 .addContainerGap(41, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -163,9 +170,11 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtConfirmaPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblConfirmaPassword))
-                        .addGap(34, 34, 34)
-                        .addComponent(btnGuardar)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(btnGuardar)
+                .addContainerGap(14, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(139, 139, 139)
@@ -175,19 +184,56 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        try {
-            String nombre = txtNombre.getText();
-            String apellido = txtApellido.getText();
-            
-            String rut = txtRut.getText();
-            String dv = txtDv.getText();
-            String edad = txtEdad.getText();
-            
-            String usuario = txtUsuario.getText();
-            String password = new String(txtPassword.getPassword());
-            String confirmaPassword = new String(txtConfirmaPassword.getPassword());
-            
-            ValidacionIngresoEjecutivo val = new ValidacionIngresoEjecutivo(rut, password, confirmaPassword, usuario);
+        try { 
+            if(txtNombre.getText().trim().equals("")){
+                JOptionPane.showMessageDialog(null, "Ingrese Nombre.");
+            }
+            else if(txtApellido.getText().trim().equals("")){
+                JOptionPane.showMessageDialog(null, "Ingrese Apellido.");
+            }
+            else if(txtRut.getText().trim().equals("")){
+                JOptionPane.showMessageDialog(null, "Ingrese Rut.");
+            }
+            else if(txtUsuario.getText().trim().equals("")){
+                JOptionPane.showMessageDialog(null, "Ingrese Usuario.");
+            }
+            else if(new String(txtPassword.getPassword()).equals("")){
+                JOptionPane.showMessageDialog(null, "Ingrese Password.");
+            }
+            else if(new String(txtConfirmaPassword.getPassword()).equals("")){
+                JOptionPane.showMessageDialog(null, "Ingrese Confirma Password.");
+            }
+            else{
+                
+                //char dv = txtDv.getText().charAt(0);
+                String nombre = txtNombre.getText().trim();
+                String apellido = txtApellido.getText().trim();
+                String rut = txtRut.getText().trim();
+                String edad = txtEdad.getText();
+                String usuario = txtUsuario.getText().trim();
+                String password = new String(txtPassword.getPassword());
+                String confirmaPassword = new String(txtConfirmaPassword.getPassword());
+                
+                ValidacionIngresoEjecutivo val = new ValidacionIngresoEjecutivo(rut, password, confirmaPassword, usuario);
+                
+                if(val.existeRut(rut)){
+                    JOptionPane.showMessageDialog(null, "El rut ingresado ya esta registrado.");
+                }
+                else if(val.passSonIguales(password, confirmaPassword)){
+                    JOptionPane.showMessageDialog(null, "Los passwords ingresados no son iguales.");
+                }
+                else if(val.existeUsuario(usuario)){
+                    JOptionPane.showMessageDialog(null, "El usuario ingresado ya existe, escoja otro.");
+                }
+                else{
+                    // Ejecutivo ejecutivoNuevo = new Ejecutivo(rut, dv, nombre, apellido, usuario, password);
+
+                    txtCorreo.setVisible(true);
+                    txtCorreo.setEditable(false);
+                    //add(txtCorreo);
+                    txtCorreo.setText(val.mostrarCorreo(rut, nombre, apellido));
+                }
+            }
         } catch (PersonaException ex) {
             Logger.getLogger(jPanelIngresoEjecutivo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -209,6 +255,7 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JPasswordField txtConfirmaPassword;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDv;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtNombre;
