@@ -165,17 +165,7 @@ public class Ejecutivo extends Persona {
         }
     }
     
-    public boolean agregarEjecutivoFormulario(String rut, char dv, String nombre, String apellido, String usuario, String password) throws PersonaException{
-        boolean resultado;
-        try{
-            Contenedor contenedor = new Contenedor();
-            contenedor.agregarEjecutivo(rut, dv, nombre, apellido, usuario, password);
-            resultado = true;
-            }
-        catch(PersonaException ex){
-            resultado = false;
-            throw new PersonaException("EL ejecutivo no se guardo.");
-        }    
-        return resultado;
+    public void agregarEjecutivoFormulario(){
+        
     }
 }

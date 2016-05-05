@@ -186,8 +186,6 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
             String confirmaPassword = new String(txtConfirmaPassword.getPassword());
             
             ValidacionIngresoEjecutivo val = new ValidacionIngresoEjecutivo(rut, password, confirmaPassword, usuario);
-            
-            
         } catch (PersonaException ex) {
             Logger.getLogger(jPanelIngresoEjecutivo.class.getName()).log(Level.SEVERE, null, ex);
         }
