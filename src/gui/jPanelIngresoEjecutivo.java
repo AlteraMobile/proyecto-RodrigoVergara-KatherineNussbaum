@@ -52,6 +52,7 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
         txtConfirmaPassword = new javax.swing.JPasswordField();
         txtCorreo = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
+        lblCorreo = new javax.swing.JLabel();
 
         lblTitulo.setText("Ingreso Ejecutivo");
 
@@ -116,10 +117,12 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnGuardar)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblConfirmaPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblConfirmaPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblCorreo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCorreo)
@@ -171,7 +174,9 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                             .addComponent(txtConfirmaPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblConfirmaPassword))
                         .addGap(18, 18, 18)
-                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCorreo))))
                 .addGap(18, 18, 18)
                 .addComponent(btnGuardar)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -227,11 +232,15 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                 }
                 else{
                     // Ejecutivo ejecutivoNuevo = new Ejecutivo(rut, dv, nombre, apellido, usuario, password);
-
-                    txtCorreo.setVisible(true);
-                    txtCorreo.setEditable(false);
                     //add(txtCorreo);
                     txtCorreo.setText(val.mostrarCorreo(rut, nombre, apellido));
+                    txtCorreo.setVisible(true);
+                    txtCorreo.setEditable(false);
+                    lblCorreo.setText("Correo");
+                    this.revalidate();
+                    this.repaint();
+                    
+                    
                 }
             }
         } catch (PersonaException ex) {
@@ -245,6 +254,7 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblConfirmaPassword;
+    private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblGuion;
     private javax.swing.JLabel lblNombres;
