@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 
 /**
- *
- * @author Katherine Nussbaum
+ * Clase Llenado de ComboBox
+ * 
+ * @author Katherine Nussbaum - Rodrigo Vergara
+ * @version 2.0 ==> 05-05-2016 
  */
 
 public class  LlenadoComboBox{

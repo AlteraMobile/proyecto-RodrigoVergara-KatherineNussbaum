@@ -8,7 +8,7 @@ import excepciones.PersonaException;
  * Clase Abstracta Persona
  * 
  * @author Katherine Nussbaum - Rodrigo Vergara
- * @version 1.0 ==> 14-04-2016 
+ * @version 2.0 ==> 05-05-2016 
  */
 
 public abstract class Persona implements GlobalUsuario {
@@ -307,10 +307,10 @@ public abstract class Persona implements GlobalUsuario {
     /**
      *Método de sobreescritura, implementado desde GlobalUsuario
      * @return boolean
-     * @throws Exception
+     * @throws PersonaException
      */
     @Override
-    public boolean login() throws Exception{
+    public boolean login() throws PersonaException{
         return false;
     }
 }

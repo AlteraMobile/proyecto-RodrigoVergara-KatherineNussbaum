@@ -4,8 +4,10 @@ package gui;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 /**
- *
- * @author Katherine Nussbaum
+ * Frame Menu Principal
+ * 
+ * @author Katherine Nussbaum - Rodrigo Vergara
+ * @version 2.0 ==> 05-05-2016 
  */
 public class jfrmMenuPrincipal extends javax.swing.JFrame {
 
@@ -32,7 +34,7 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
         jPanelPrincipal = new javax.swing.JPanel();
         jMenuBarPrincipal = new javax.swing.JMenuBar();
         btnVentas = new javax.swing.JMenu();
-        mnVenta = new javax.swing.JMenuItem();
+        btnVenta = new javax.swing.JMenuItem();
         btnRegistros = new javax.swing.JMenu();
         btnAdministrcion = new javax.swing.JMenu();
         btnIngresoEjecutivo = new javax.swing.JMenuItem();
@@ -60,13 +62,13 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
 
         btnVentas.setText("Ventas");
 
-        mnVenta.setText("Venta");
-        mnVenta.addActionListener(new java.awt.event.ActionListener() {
+        btnVenta.setText("Venta");
+        btnVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnVentaActionPerformed(evt);
+                btnVentaActionPerformed(evt);
             }
         });
-        btnVentas.add(mnVenta);
+        btnVentas.add(btnVenta);
 
         jMenuBarPrincipal.add(btnVentas);
 
@@ -117,14 +119,13 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnIngresoEjecutivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoEjecutivoActionPerformed
-        jPanelIngresoEjecutivo ingresoEjecutivo = new jPanelIngresoEjecutivo();
-        cambioPanel(ingresoEjecutivo);
+        cambioPanel(new jPanelIngresoEjecutivo());
     }//GEN-LAST:event_btnIngresoEjecutivoActionPerformed
 
-    private void mnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVentaActionPerformed
+    private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         // TODO add your handling code here:
         cambioPanel(new jPanelIngresoVehiculo());
-    }//GEN-LAST:event_mnVentaActionPerformed
+    }//GEN-LAST:event_btnVentaActionPerformed
 
     public void cambioPanel(JPanel panel){
         jPanelPrincipal.removeAll();
@@ -175,9 +176,9 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnCerrar;
     private javax.swing.JMenuItem btnIngresoEjecutivo;
     private javax.swing.JMenu btnRegistros;
+    private javax.swing.JMenuItem btnVenta;
     private javax.swing.JMenu btnVentas;
     private javax.swing.JMenuBar jMenuBarPrincipal;
     private javax.swing.JPanel jPanelPrincipal;
-    private javax.swing.JMenuItem mnVenta;
     // End of variables declaration//GEN-END:variables
 }

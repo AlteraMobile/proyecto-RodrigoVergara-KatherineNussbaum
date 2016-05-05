@@ -6,8 +6,10 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 import persistencia.Contenedor;
 /**
- *
- * @author KTY
+ * Clase Validación de Ingreso de Ejecutivo
+ * 
+ * @author Katherine Nussbaum - Rodrigo Vergara
+ * @version 2.0 ==> 05-05-2016 
  */
 public class ValidacionIngresoEjecutivo {
     Contenedor cont = new Contenedor();

@@ -7,8 +7,10 @@ import java.util.logging.Logger;
 import reglaNegocio.ValidacionIngresoEjecutivo;
 
 /**
- *
- * @author KTY
+ * Panel Ingreso de Ejecutivos
+ * 
+ * @author Katherine Nussbaum - Rodrigo Vergara
+ * @version 2.0 ==> 05-05-2016 
  */
 public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
 
