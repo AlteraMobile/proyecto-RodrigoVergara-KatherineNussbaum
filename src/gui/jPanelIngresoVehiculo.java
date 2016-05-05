@@ -4,7 +4,7 @@ package gui;
 import persistencia.LlenadoComboBox;
 
 /**
- * Panel Ingreso de Vehiculo
+ * Panel jPanelIngresoVehiculo
  * 
  * @author Katherine Nussbaum - Rodrigo Vergara
  * @version 2.0 ==> 05-05-2016 
@@ -12,7 +12,7 @@ import persistencia.LlenadoComboBox;
 public class jPanelIngresoVehiculo extends javax.swing.JPanel {
 
     /**
-     * Creates new form jPanelIngresoVehiculo
+     * Constructor del Panel jPanelIngresoVehiculo
      */
     public jPanelIngresoVehiculo() {
         initComponents();
@@ -73,11 +73,6 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
 
         rdbtnGrupoTipo.add(rdbtnUsado);
         rdbtnUsado.setText("Usado");
-        rdbtnUsado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdbtnUsadoActionPerformed(evt);
-            }
-        });
 
         rdbtnGrupoTipo.add(rdbtnNuevo);
         rdbtnNuevo.setText("Nuevo");
@@ -173,10 +168,6 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void rdbtnUsadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbtnUsadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdbtnUsadoActionPerformed
 
     
 

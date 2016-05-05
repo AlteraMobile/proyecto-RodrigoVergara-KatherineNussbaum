@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 
 /**
- * Clase Llenado de ComboBox
+ * Clase LlenadoComboBox
  * 
  * @author Katherine Nussbaum - Rodrigo Vergara
  * @version 2.0 ==> 05-05-2016 
@@ -15,11 +15,18 @@ public class  LlenadoComboBox{
     private final ArrayList<String> listaColor;
     private final ArrayList<String> listaMarca;
     
+    /**
+     * Constructor de LlenadoComboBox sin parámetros
+     */
     public LlenadoComboBox(){
         listaColor = new ArrayList<>();
         listaMarca = new ArrayList<>();
     }
     
+    /**
+     * Creador llenadoColor
+     * @return ArrayList
+     */
     public ArrayList llenadoColor(){
         listaColor.add("rojo");
         listaColor.add("azul");
@@ -27,7 +34,10 @@ public class  LlenadoComboBox{
         listaColor.add("negro");
         return listaColor;
     }
-    
+    /**
+     * Creador llenadMarca
+     * @return ArrayList
+     */
     public ArrayList llenadoMarca(){
         listaMarca.add("Audi");
         listaMarca.add("Volkswagen");
@@ -36,6 +46,10 @@ public class  LlenadoComboBox{
         return listaMarca;
     }
     
+    /**
+     * Carga lista color en comboBox a eleccion
+     * @param cbbx
+     */
     public void cargaComboBoxColor(JComboBox cbbx){
         ArrayList<String> auto = llenadoColor();
 
@@ -43,7 +57,10 @@ public class  LlenadoComboBox{
            cbbx.addItem(auto.get(x));
         }
     }
-    
+    /**
+     * Carga lista marca en comboBox a eleccion
+     * @param cbbx
+     */
     public void cargaComboBoxMarca(JComboBox cbbx){
         ArrayList<String> auto = llenadoMarca();
 
@@ -51,5 +68,4 @@ public class  LlenadoComboBox{
            cbbx.addItem(auto.get(x));
         }
     }
-    
 }
