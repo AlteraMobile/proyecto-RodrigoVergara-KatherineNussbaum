@@ -9,5 +9,5 @@ import excepciones.*;
  */
 
 public interface GlobalUsuario {
-    public boolean login() throws Exception;
+    public boolean login() throws PersonaException;
 }

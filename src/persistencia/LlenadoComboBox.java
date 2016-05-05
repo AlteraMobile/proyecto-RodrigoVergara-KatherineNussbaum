@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 
 /**
- *
- * @author Katherine Nussbaum
+ * Clase Llenado de ComboBox
+ * 
+ * @author Katherine Nussbaum - Rodrigo Vergara
+ * @version 2.0 ==> 05-05-2016 
  */
 
 public class  LlenadoComboBox{
@@ -16,7 +18,6 @@ public class  LlenadoComboBox{
     public LlenadoComboBox(){
         listaColor = new ArrayList<>();
         listaMarca = new ArrayList<>();
-
     }
     
     public ArrayList llenadoColor(){
@@ -31,6 +32,7 @@ public class  LlenadoComboBox{
         listaMarca.add("Audi");
         listaMarca.add("Volkswagen");
         listaMarca.add("Fiat");
+        listaMarca.add("Honda");
         return listaMarca;
     }
     

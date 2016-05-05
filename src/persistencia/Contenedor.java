@@ -25,6 +25,7 @@ public class Contenedor
         listadoEjecutivo.add(new Ejecutivo("16777400",'k',"Felipe","contreras","fcontreras","123456","Santiago",Rol.PERSONAL,true));
         listadoEjecutivo.add(new Ejecutivo("14587965",'3',"Camilo","Cofre","ccofre","654321","Santiago",Rol.ADMIN,false));
         listadoEjecutivo.add(new Ejecutivo("15258964",'1',"Constanza","Martinez","cmartinez","123456","Santiago",Rol.PERSONAL,false));
+        listadoEjecutivo.add(new Ejecutivo("10403861",'1',"Katherine","Nussbaum","knuss","lola","Santiago",Rol.ADMIN,false));
    }
     
    /**
@@ -34,4 +35,8 @@ public class Contenedor
    public ArrayList listadoEjecutivos(){
         return listadoEjecutivo ;    
     }
+   
+   public void agregarEjecutivo(String rut, char dv, String nombre, String apellido, String usuario, String password) throws PersonaException{
+       listadoEjecutivo.add(new Ejecutivo(rut, dv, nombre, apellido, usuario, password));
+   }
 }

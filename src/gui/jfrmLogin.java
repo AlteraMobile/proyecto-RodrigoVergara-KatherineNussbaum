@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import reglaNegocio.Ejecutivo;
 
 /**
- * Clase PersonaException
+ * Formulario Login
  * 
  * @author Katherine Nussbaum - Rodrigo Vergara
  * @version 2.0 ==> 05-05-2016 

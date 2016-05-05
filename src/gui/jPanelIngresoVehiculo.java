@@ -3,12 +3,11 @@ package gui;
 
 import persistencia.LlenadoComboBox;
 
-
-
-
 /**
- *
- * @author Katherine Nussbaum
+ * Panel Ingreso de Vehiculo
+ * 
+ * @author Katherine Nussbaum - Rodrigo Vergara
+ * @version 2.0 ==> 05-05-2016 
  */
 public class jPanelIngresoVehiculo extends javax.swing.JPanel {
 
@@ -18,8 +17,9 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
     public jPanelIngresoVehiculo() {
         initComponents();
         cbbxMarca.removeAll();
+        cbbxColor.removeAll();
         new LlenadoComboBox().cargaComboBoxColor(cbbxColor);
-        new LlenadoComboBox().cargaComboBoxColor(cbbxMarca);
+        new LlenadoComboBox().cargaComboBoxMarca(cbbxMarca);
         
     }
 
@@ -32,21 +32,22 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rdbtnGrupoTipo = new javax.swing.ButtonGroup();
         lblTitulo = new javax.swing.JLabel();
         lblMarca = new javax.swing.JLabel();
         lblChasis = new javax.swing.JLabel();
         lblColor = new javax.swing.JLabel();
         lblAnio = new javax.swing.JLabel();
-        cbbxMarca = new javax.swing.JComboBox<>();
-        txtChasis = new javax.swing.JTextField();
-        cbbxColor = new javax.swing.JComboBox<>();
-        txtAnio = new javax.swing.JTextField();
         lblModelo = new javax.swing.JLabel();
         lblPuertas = new javax.swing.JLabel();
         lblTipo = new javax.swing.JLabel();
+        lblPatente = new javax.swing.JLabel();
+        cbbxMarca = new javax.swing.JComboBox<>();
+        cbbxColor = new javax.swing.JComboBox<>();
+        txtChasis = new javax.swing.JTextField();
+        txtAnio = new javax.swing.JTextField();
         txtModelo = new javax.swing.JTextField();
         txtPuertas = new javax.swing.JTextField();
-        lblPatente = new javax.swing.JLabel();
         txtPatente = new javax.swing.JTextField();
         rdbtnUsado = new javax.swing.JRadioButton();
         rdbtnNuevo = new javax.swing.JRadioButton();
@@ -70,6 +71,7 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
 
         lblPatente.setText("Patente:");
 
+        rdbtnGrupoTipo.add(rdbtnUsado);
         rdbtnUsado.setText("Usado");
         rdbtnUsado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +79,7 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
             }
         });
 
+        rdbtnGrupoTipo.add(rdbtnNuevo);
         rdbtnNuevo.setText("Nuevo");
 
         btnGuardar.setText("Guardar");
@@ -190,6 +193,7 @@ public class jPanelIngresoVehiculo extends javax.swing.JPanel {
     private javax.swing.JLabel lblPuertas;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.ButtonGroup rdbtnGrupoTipo;
     private javax.swing.JRadioButton rdbtnNuevo;
     private javax.swing.JRadioButton rdbtnUsado;
     private javax.swing.JTextField txtAnio;
