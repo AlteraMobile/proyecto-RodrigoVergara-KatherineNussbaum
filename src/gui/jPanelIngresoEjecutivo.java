@@ -5,6 +5,7 @@ import excepciones.PersonaException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import reglaNegocio.Ejecutivo;
 import reglaNegocio.ValidacionIngresoEjecutivo;
 
 /**
@@ -210,7 +211,7 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
             }
             else{
                 
-                //char dv = txtDv.getText().charAt(0);
+                char dv = txtDv.getText().charAt(0);
                 String nombre = txtNombre.getText().trim();
                 String apellido = txtApellido.getText().trim();
                 String rut = txtRut.getText().trim();
@@ -231,7 +232,9 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "El usuario ingresado ya existe, escoja otro.");
                 }
                 else{
-                    // Ejecutivo ejecutivoNuevo = new Ejecutivo(rut, dv, nombre, apellido, usuario, password);
+                    
+                    Ejecutivo ejecutivoNuevo = new Ejecutivo(rut, dv, nombre, apellido, usuario, password);
+                    ejecutivoNuevo.agregarEjecutivoFormulario(rut, dv, nombre, apellido, usuario, password);
                     //add(txtCorreo);
                     txtCorreo.setText(val.mostrarCorreo(rut, nombre, apellido));
                     txtCorreo.setVisible(true);
@@ -239,8 +242,6 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                     lblCorreo.setText("Correo");
                     this.revalidate();
                     this.repaint();
-                    
-                    
                 }
             }
         } catch (PersonaException ex) {

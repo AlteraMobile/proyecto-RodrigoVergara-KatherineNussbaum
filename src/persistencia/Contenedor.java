@@ -12,7 +12,7 @@ import excepciones.*;
 public class Contenedor
 {
     
-   private final ArrayList<Ejecutivo> listadoEjecutivo;
+   private static ArrayList<Ejecutivo> listadoEjecutivo;
 
    /**
     * Constructor para Contenedor sin parámetros
@@ -35,8 +35,18 @@ public class Contenedor
    public ArrayList listadoEjecutivos(){
         return listadoEjecutivo ;    
     }
-   /*
-   public void agregarEjecutivo(String rut, char dv, String nombre, String apellido, String usuario, String password) throws PersonaException{
+   
+    /**
+     * Metodo que agregar Ejecutivo nuevo a la lista de Ejecutivos
+     * @param rut
+     * @param dv
+     * @param nombre
+     * @param apellido
+     * @param usuario
+     * @param password
+     * @throws PersonaException
+     */
+    public void agregarEjecutivo(String rut, char dv, String nombre, String apellido, String usuario, String password) throws PersonaException{
        listadoEjecutivo.add(new Ejecutivo(rut, dv, nombre, apellido, usuario, password));
-   }*/
+   }
 }

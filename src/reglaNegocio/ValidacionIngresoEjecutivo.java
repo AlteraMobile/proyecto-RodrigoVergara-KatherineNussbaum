@@ -1,17 +1,17 @@
 
 package reglaNegocio;
 import excepciones.PersonaException;
+import static gui.jfrmLogin.contenedor;
 import java.util.ArrayList;
 import java.util.Iterator;
-import persistencia.Contenedor;
 /**
  * Clase Validación de Ingreso de Ejecutivo
  * 
  * @author Katherine Nussbaum - Rodrigo Vergara
- * @version 2.0 ==> 05-05-2016 
+ * @version 2.0 ==> 07-05-2016 
  */
 public class ValidacionIngresoEjecutivo {
-    Contenedor cont = new Contenedor();
+    //Contenedor cont = new Contenedor();
     ArrayList lista; 
     
     String rut;
@@ -107,7 +107,7 @@ public class ValidacionIngresoEjecutivo {
      */
     public boolean existeRut(String rut){
         boolean resultado = false;
-        lista = cont.listadoEjecutivos();
+        lista = contenedor.listadoEjecutivos();
         Iterator<Ejecutivo> it = lista.iterator();
         while(it.hasNext()){
             Ejecutivo ejecutivo= it.next();
@@ -143,7 +143,7 @@ public class ValidacionIngresoEjecutivo {
      */
     public boolean existeUsuario(String usuario){
            boolean resultado = false;
-           lista = cont.listadoEjecutivos();
+           lista = contenedor.listadoEjecutivos();
            Iterator<Ejecutivo> it = lista.iterator();
            while(it.hasNext()){
                Ejecutivo ejecutivo= it.next();
