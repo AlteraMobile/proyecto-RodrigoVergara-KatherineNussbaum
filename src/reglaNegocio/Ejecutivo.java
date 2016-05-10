@@ -3,14 +3,14 @@ package reglaNegocio;
 
 import enumeraciones.Rol;
 import excepciones.PersonaException;
+import static gui.jfrmLogin.contenedor;
 import java.util.Iterator;
-import persistencia.Contenedor;
 
 /**
  * Clase Ejecutivo 
  * 
  * @author Katherine Nussbaum - Rodrigo Vergara
- * @version 1.0 ==> 14-04-2016 
+ * @version 1.0 ==> 07-05-2016 
  */
 public class Ejecutivo extends Persona {
 
@@ -131,7 +131,7 @@ public class Ejecutivo extends Persona {
     public boolean login() throws PersonaException {
         
         boolean retorno = false;
-        Contenedor contenedor = new Contenedor();
+       // Contenedor contenedor = new Contenedor();
         Iterator existe = contenedor.listadoEjecutivos().iterator();
         
         while(existe.hasNext()){
@@ -177,8 +177,18 @@ public class Ejecutivo extends Persona {
         }
     }
     
-    public void agregarEjecutivoFormulario(){
-        
+    /**
+     * Método que agregar Ejecutivo a la lista ejecutivo
+     * @param rut
+     * @param dv
+     * @param nombre
+     * @param apellido
+     * @param usuario
+     * @param password
+     * @throws PersonaException
+     */
+    public void agregarEjecutivoFormulario(String rut, char dv, String nombre, String apellido, String usuario, String password) throws PersonaException{
+        contenedor.agregarEjecutivo(rut, dv, nombre, apellido, usuario, password);
     }
 
 }

@@ -2,23 +2,33 @@
 package gui;
 
 import excepciones.PersonaException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import persistencia.Contenedor;
 import reglaNegocio.Ejecutivo;
 
 /**
  * Frame jfrmLogin
  * 
  * @author Katherine Nussbaum - Rodrigo Vergara
- * @version 2.0 ==> 05-05-2016 
+ * @version 2.0 ==> 07-05-2016 
  */
 public class jfrmLogin extends javax.swing.JFrame {
 
     /**
-     * Constructor de jfrmLogin
+     *
      */
-    public jfrmLogin() {
+    public static Contenedor contenedor;
+
+    /**
+     * Constructor de jfrmLogin
+     * @throws excepciones.PersonaException
+     */
+    public jfrmLogin() throws PersonaException {
         initComponents();
         setLocationRelativeTo(null);
+        contenedor = new Contenedor();
     }
 
     /**
@@ -102,7 +112,8 @@ public class jfrmLogin extends javax.swing.JFrame {
             
            if(ejecutivo.login()){
                // cierro ventana Login
-               this.dispose();
+               //this.dispose();
+               this.setVisible(false);
                // abre ventana MenuPrincipal
                jfrmMenuPrincipal menu = new jfrmMenuPrincipal();
                // ventana visible
@@ -148,7 +159,11 @@ public class jfrmLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new jfrmLogin().setVisible(true);
+                try {
+                    new jfrmLogin().setVisible(true);
+                } catch (PersonaException ex) {
+                    Logger.getLogger(jfrmLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
