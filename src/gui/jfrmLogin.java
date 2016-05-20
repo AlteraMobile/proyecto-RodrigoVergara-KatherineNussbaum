@@ -5,7 +5,7 @@ import excepciones.PersonaException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import persistencia.EjecutivoContenedor;
+import persistencia.Contenedor;
 import reglaNegocio.Ejecutivo;
 
 /**
@@ -19,7 +19,7 @@ public class jfrmLogin extends javax.swing.JFrame {
     /**
      *
      */
-    public static EjecutivoContenedor contenedor;
+    public static Contenedor contenedor;
 
     /**
      * Constructor de jfrmLogin
@@ -28,7 +28,7 @@ public class jfrmLogin extends javax.swing.JFrame {
     public jfrmLogin() throws PersonaException {
         initComponents();
         setLocationRelativeTo(null);
-        contenedor = new EjecutivoContenedor();
+        contenedor = new Contenedor();
     }
 
     /**
