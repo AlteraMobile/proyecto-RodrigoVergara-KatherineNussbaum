@@ -131,7 +131,7 @@ public class Ejecutivo extends Persona {
     public boolean login() throws PersonaException {
         
         boolean retorno = false;
-       // Contenedor contenedor = new Contenedor();
+       // EjecutivoContenedor contenedor = new EjecutivoContenedor();
         Iterator existe = contenedor.listadoEjecutivos().iterator();
         
         while(existe.hasNext()){
