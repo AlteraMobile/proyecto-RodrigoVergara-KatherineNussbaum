@@ -11,7 +11,7 @@ import java.util.Iterator;
  * @version 2.0 ==> 07-05-2016 
  */
 public class ValidacionIngresoEjecutivo {
-    //Contenedor cont = new EjecutivoContenedor();
+    //Contenedor cont = new Contenedor();
     ArrayList lista; 
     
     String rut;
