@@ -12,7 +12,7 @@ import reglaNegocio.ValidacionIngresoEjecutivo;
  * Panel jPanelIngresoEjecutivo
  * 
  * @author Katherine Nussbaum - Rodrigo Vergara
- * @version 2.0 ==> 05-05-2016 
+ * @version 3.0 ==> 29-05-2016 
  */
 public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
 
@@ -37,7 +37,6 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
         lblNombres = new javax.swing.JLabel();
         lblApellidos = new javax.swing.JLabel();
         lblRut = new javax.swing.JLabel();
-        lblEdad = new javax.swing.JLabel();
         lblRut1 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         lblGuion = new javax.swing.JLabel();
@@ -47,13 +46,13 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
         txtApellido = new javax.swing.JTextField();
         txtRut = new javax.swing.JTextField();
         txtDv = new javax.swing.JTextField();
-        txtEdad = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         txtConfirmaPassword = new javax.swing.JPasswordField();
         txtCorreo = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         lblCorreo = new javax.swing.JLabel();
+        btnLimpiarNuevoEjecutivo = new javax.swing.JButton();
 
         lblTitulo.setText("Ingreso Ejecutivo");
 
@@ -62,8 +61,6 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
         lblApellidos.setText("Apellidos");
 
         lblRut.setText("Rut");
-
-        lblEdad.setText("Edad");
 
         lblRut1.setText("-");
 
@@ -75,6 +72,33 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
 
         lblConfirmaPassword.setText("Confirma Password");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
+            }
+        });
+
+        txtRut.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtRutFocusLost(evt);
+            }
+        });
+        txtRut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRutKeyTyped(evt);
+            }
+        });
+
+        txtDv.setEditable(false);
+
+        txtUsuario.setEditable(false);
+
         txtCorreo.setEditable(false);
         txtCorreo.setOpaque(false);
 
@@ -85,39 +109,46 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
             }
         });
 
+        btnLimpiarNuevoEjecutivo.setText("Limpiar");
+        btnLimpiarNuevoEjecutivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarNuevoEjecutivoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblTitulo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblRut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                            .addComponent(lblEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtApellido)
+                        .addComponent(btnGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLimpiarNuevoEjecutivo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblTitulo)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                                    .addComponent(txtRut, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(lblRut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
+                                .addGap(4, 4, 4)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtApellido)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblRut1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtDv, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblRut1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDv, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnGuardar)
-                    .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(lblConfirmaPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -130,12 +161,12 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                             .addComponent(txtUsuario)
                             .addComponent(txtPassword)
                             .addComponent(txtConfirmaPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(151, 151, 151)
                     .addComponent(lblGuion)
-                    .addContainerGap(438, Short.MAX_VALUE)))
+                    .addContainerGap(421, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,11 +188,7 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                             .addComponent(lblRut)
                             .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblRut1)
-                            .addComponent(txtDv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblEdad)
-                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtDv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblUsuario)
@@ -178,70 +205,145 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCorreo))))
-                .addGap(18, 18, 18)
-                .addComponent(btnGuardar)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnLimpiarNuevoEjecutivo))
+                .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(139, 139, 139)
                     .addComponent(lblGuion)
-                    .addContainerGap(92, Short.MAX_VALUE)))
+                    .addContainerGap(89, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        try { 
-            if(txtNombre.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null, "Ingrese Nombre.");
+        try {
+            String mensaje;
+            mensaje = "";
+            
+            String digito;
+            String usuario;
+            String nombre = txtNombre.getText().trim();
+            String apellido = txtApellido.getText().trim();
+            String rut = txtRut.getText().trim();
+            String password = new String(txtPassword.getPassword());
+            String confirmaPassword = new String(txtConfirmaPassword.getPassword());
+    
+            if(nombre.equals("")){
+                mensaje = "Nombre";
+                //JOptionPane.showMessageDialog(null, "Ingrese Nombre.");
             }
-            else if(txtApellido.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null, "Ingrese Apellido.");
-            }
-            else if(txtRut.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null, "Ingrese Rut.");
-            }
-            else if(txtUsuario.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null, "Ingrese Usuario.");
-            }
-            else if(new String(txtPassword.getPassword()).equals("")){
-                JOptionPane.showMessageDialog(null, "Ingrese Password.");
-            }
-            else if(new String(txtConfirmaPassword.getPassword()).equals("")){
-                JOptionPane.showMessageDialog(null, "Ingrese Confirma Password.");
-            }
-            else{
-                
-                char dv = txtDv.getText().charAt(0);
-                String nombre = txtNombre.getText().trim();
-                String apellido = txtApellido.getText().trim();
-                String rut = txtRut.getText().trim();
-                String edad = txtEdad.getText();
-                String usuario = txtUsuario.getText().trim();
-                String password = new String(txtPassword.getPassword());
-                String confirmaPassword = new String(txtConfirmaPassword.getPassword());
-                
-                ValidacionIngresoEjecutivo val = new ValidacionIngresoEjecutivo(rut, password, confirmaPassword, usuario);
-                
-                if(val.existeRut(rut)){
-                    JOptionPane.showMessageDialog(null, "El rut ingresado ya esta registrado.");
+            if(apellido.equals("")){
+                if( !"".equals(mensaje) ){
+                    mensaje = mensaje + ", ";
                 }
-                else if(val.passSonIguales(password, confirmaPassword)){
-                    JOptionPane.showMessageDialog(null, "Los passwords ingresados no son iguales.");
+                mensaje = mensaje + "Apellido";
+                //JOptionPane.showMessageDialog(null, "Ingrese Apellido.");
+            }
+            if(rut.equals("")){
+                 if( !"".equals(mensaje) ){
+                    mensaje = mensaje + ", ";
                 }
-                else if(val.existeUsuario(usuario)){
-                    JOptionPane.showMessageDialog(null, "El usuario ingresado ya existe, escoja otro.");
+                mensaje = mensaje + "Rut";
+               //JOptionPane.showMessageDialog(null, "Ingrese Rut.");
+            }
+            if(password.equals("")){
+                 if( !"".equals(mensaje) ){
+                    mensaje = mensaje + ", ";
+                }
+                mensaje = mensaje + "Password";
+                //JOptionPane.showMessageDialog(null, "Ingrese Password.");
+            }
+            if(confirmaPassword.equals("")){
+                 if( !"".equals(mensaje) ){
+                    mensaje = mensaje + ", ";
+                }
+                mensaje = mensaje + "Confirma Password";
+                //JOptionPane.showMessageDialog(null, "Ingrese Confirma Password.");
+            }
+            if ( !"".equals(mensaje) ){
+                JOptionPane.showMessageDialog(null, "Campo Vacío: " + mensaje);
+            }
+            else if( "".equals(mensaje) ){
+                
+                if( nombre.length() <= 3 ){
+                    if( !"".equals(mensaje) ){
+                        mensaje = mensaje + " ";
+                    }
+                    mensaje = mensaje + "El Nombre debe tener al menos 3 letras.";
+                }
+                int cont;
+                cont = 0;
+                for(int i = 0; i < apellido.length(); i++){
+                    char espacio;
+                    espacio = apellido.charAt(i);
+                    if (espacio == ' '){
+                        cont = cont + 1;
+                    }
+                }
+                if( cont < 1 ){
+                    if( !"".equals(mensaje) ){
+                        mensaje = mensaje + " ";
+                    }
+                    mensaje = mensaje + "Debe ingresar al menos dos apellidos.";
+                }
+                if( rut.length() != 8 ){
+                    if( !"".equals(mensaje) ){
+                        mensaje = mensaje + " ";
+                    }
+                    mensaje = mensaje + "Debe ingresar 8 digitos en el rut.";
+                }
+                if( password.length() < 3 ){
+                    if( !"".equals(mensaje) ){
+                        mensaje = mensaje + " ";
+                    }
+                    mensaje = mensaje + "El password debe tener al menos 4 letras.";
+                }
+                if( confirmaPassword.length() < 3 ){
+                    if( !"".equals(mensaje) ){
+                        mensaje = mensaje + " ";
+                    }
+                    mensaje = mensaje + "La confirmación del password debe tener al menos 4 letras.";
+                }
+                if ( !"".equals(mensaje) ){
+                    JOptionPane.showMessageDialog(null, mensaje);
                 }
                 else{
-                    
-                    Ejecutivo ejecutivoNuevo = new Ejecutivo(rut, dv, nombre, apellido, usuario, password);
-                    ejecutivoNuevo.agregarEjecutivoFormulario(rut, dv, nombre, apellido, usuario, password);
-                    //add(txtCorreo);
-                    txtCorreo.setText(val.mostrarCorreo(rut, nombre, apellido));
-                    txtCorreo.setVisible(true);
-                    txtCorreo.setEditable(false);
-                    lblCorreo.setText("Correo");
-                    this.revalidate();
-                    this.repaint();
+                    digito = ValidacionIngresoEjecutivo.crearDigito(rut);
+
+                    // crear Usuario
+                    usuario = ValidacionIngresoEjecutivo.crearUsuario(nombre, apellido);
+                    txtUsuario.setText(usuario);
+
+                    ValidacionIngresoEjecutivo val = new ValidacionIngresoEjecutivo(rut, password, confirmaPassword, usuario);
+
+                    if(val.existeRut(rut)){
+                        JOptionPane.showMessageDialog(null, "El rut ingresado ya esta registrado.");
+                    }
+                    else if(val.passSonIguales(password, confirmaPassword)){
+                        JOptionPane.showMessageDialog(null, "Los passwords ingresados no son iguales.");
+                    }
+                    else if(val.existeUsuario(usuario)){
+                        JOptionPane.showMessageDialog(null, "El usuario ingresado ya existe, escoja otro.");
+                    }
+                    else{
+                        int guardar = JOptionPane.showConfirmDialog(null , "Esta seguro", "Confirmar guardar", JOptionPane.YES_NO_CANCEL_OPTION);
+                        if(guardar == JOptionPane.OK_OPTION){
+                            char dv = digito.charAt(0);
+                            Ejecutivo ejecutivoNuevo;
+                            ejecutivoNuevo = new Ejecutivo(rut, dv, nombre, apellido, usuario, password);
+                            ejecutivoNuevo.agregarEjecutivoFormulario(rut, dv, nombre, apellido, usuario, password);
+                            //add(txtCorreo);
+                            txtCorreo.setText(val.mostrarCorreo(rut, nombre, apellido));
+                            txtCorreo.setVisible(true);
+                            txtCorreo.setEditable(false);
+                            lblCorreo.setText("Correo");
+                            this.revalidate();
+                            this.repaint();
+                        }
+                    }
                 }
             }
         } catch (PersonaException ex) {
@@ -250,13 +352,54 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void btnLimpiarNuevoEjecutivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarNuevoEjecutivoActionPerformed
+        txtDv.setText(null);
+        txtNombre.setText(null);
+        txtApellido.setText(null);
+        txtRut.setText(null);
+        txtUsuario.setText(null);
+        txtPassword.setText(null);
+        txtConfirmaPassword.setText(null);
+    }//GEN-LAST:event_btnLimpiarNuevoEjecutivoActionPerformed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char car = evt.getKeyChar();
+        String cadena = (""+car).toLowerCase();
+        car = cadena.charAt(0);
+        evt.setKeyChar(car);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        char car = evt.getKeyChar();
+        String cadena = (""+car).toLowerCase();
+        car = cadena.charAt(0);
+        evt.setKeyChar(car);
+    }//GEN-LAST:event_txtApellidoKeyTyped
+
+    private void txtRutKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutKeyTyped
+        char car = evt.getKeyChar();
+        if(!Character.isDigit(car)) { 
+              getToolkit().beep(); 
+              evt.consume();   
+              txtRut.setText(""); 
+          } 
+    }//GEN-LAST:event_txtRutKeyTyped
+
+    private void txtRutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRutFocusLost
+        // crear Digito Verificador
+        String rut = txtRut.getText().trim();
+        String digito;
+        digito = ValidacionIngresoEjecutivo.crearDigito(rut);
+        txtDv.setText(digito);
+    }//GEN-LAST:event_txtRutFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiarNuevoEjecutivo;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblConfirmaPassword;
     private javax.swing.JLabel lblCorreo;
-    private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblGuion;
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblPassword;
@@ -268,7 +411,6 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtConfirmaPassword;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDv;
-    private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtRut;
