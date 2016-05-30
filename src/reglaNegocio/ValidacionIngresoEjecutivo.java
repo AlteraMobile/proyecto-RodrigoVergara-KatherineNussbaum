@@ -193,4 +193,77 @@ public class ValidacionIngresoEjecutivo {
         
         return correo;
     }
+    /**
+     * Metodo para validar rut
+     * @param rut
+     * @return String
+     */
+     public static String crearDigito(String rut)
+    {        
+        int cantidad = rut.length();
+        int factor = 2;
+        int suma = 0;
+        int verificador;
+        String dv;
+        for(int i = cantidad; i > 0; i--)
+        {
+            if(factor > 7)
+            {
+                factor = 2;
+            }
+            suma += (Integer.parseInt(rut.substring((i-1), i)))*factor;
+            factor++;
+
+        }
+        verificador = 11 - suma%11;
+        if(verificador >= 1 && verificador <= 9 )
+        {
+            dv = String.valueOf(verificador);
+        }
+        else
+        {
+            if(verificador == 10)
+            {
+                dv = "K";
+            }
+            else
+            {
+                 dv = "0";
+            }
+        }
+        return dv;
+    }  
+     
+     /**
+      * Método para crear usuario
+      * @param nombre
+      * @param apellido
+      * @return String
+      */
+    public static String crearUsuario(String nombre, String apellido){
+        String usuario;
+        String primerApellido;
+        int numeroRandom;
+        
+        primerApellido = "";
+        for(int i = 0; i < apellido.length(); i++){
+            char espacio;
+            espacio = apellido.charAt(i);
+            if (espacio == ' '){
+                break;
+            }
+            else{
+                primerApellido = primerApellido + espacio;
+            }
+        }
+        
+        numeroRandom = (int) (Math.random() * 100);
+        
+        usuario = nombre.substring(0, 1);
+        usuario = usuario + primerApellido;
+        usuario = usuario + numeroRandom;
+        usuario = usuario.toLowerCase();
+        
+        return usuario;
+    }
 }

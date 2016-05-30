@@ -84,7 +84,20 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
             }
         });
 
+        txtRut.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtRutFocusLost(evt);
+            }
+        });
+        txtRut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRutKeyTyped(evt);
+            }
+        });
+
         txtDv.setEditable(false);
+
+        txtUsuario.setEditable(false);
 
         txtCorreo.setEditable(false);
         txtCorreo.setOpaque(false);
@@ -209,37 +222,41 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
         try {
             String mensaje;
             mensaje = "";
+            
+            String digito;
+            String usuario;
+            String nombre = txtNombre.getText().trim();
+            String apellido = txtApellido.getText().trim();
+            String rut = txtRut.getText().trim();
+            String password = new String(txtPassword.getPassword());
+            String confirmaPassword = new String(txtConfirmaPassword.getPassword());
     
-            if(txtNombre.getText().trim().equals("")){
+            if(nombre.equals("")){
                 mensaje = "Nombre";
                 //JOptionPane.showMessageDialog(null, "Ingrese Nombre.");
             }
-            if(txtApellido.getText().trim().equals("")){
+            if(apellido.equals("")){
                 if( !"".equals(mensaje) ){
                     mensaje = mensaje + ", ";
                 }
                 mensaje = mensaje + "Apellido";
                 //JOptionPane.showMessageDialog(null, "Ingrese Apellido.");
             }
-            if(txtRut.getText().trim().equals("")){
+            if(rut.equals("")){
                  if( !"".equals(mensaje) ){
                     mensaje = mensaje + ", ";
                 }
                 mensaje = mensaje + "Rut";
                //JOptionPane.showMessageDialog(null, "Ingrese Rut.");
             }
-            if(txtUsuario.getText().trim().equals("")){
-                
-                //JOptionPane.showMessageDialog(null, "Ingrese Usuario.");
-            }
-            if(new String(txtPassword.getPassword()).equals("")){
+            if(password.equals("")){
                  if( !"".equals(mensaje) ){
                     mensaje = mensaje + ", ";
                 }
                 mensaje = mensaje + "Password";
                 //JOptionPane.showMessageDialog(null, "Ingrese Password.");
             }
-            if(new String(txtConfirmaPassword.getPassword()).equals("")){
+            if(confirmaPassword.equals("")){
                  if( !"".equals(mensaje) ){
                     mensaje = mensaje + ", ";
                 }
@@ -251,43 +268,82 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
             }
             else if( "".equals(mensaje) ){
                 
-                if( txtNombre.getText().trim().length() < 3 ){
-                    mensaje = "El Nombre debe tener al menos 3 letras.";
+                if( nombre.length() <= 3 ){
+                    if( !"".equals(mensaje) ){
+                        mensaje = mensaje + " ";
+                    }
+                    mensaje = mensaje + "El Nombre debe tener al menos 3 letras.";
                 }
-                
-            }
-            else{
-                
-                char dv = txtDv.getText().charAt(0);
-                String nombre = txtNombre.getText().trim();
-                String apellido = txtApellido.getText().trim();
-                String rut = txtRut.getText().trim();
-                String usuario = txtUsuario.getText().trim();
-                String password = new String(txtPassword.getPassword());
-                String confirmaPassword = new String(txtConfirmaPassword.getPassword());
-                
-                ValidacionIngresoEjecutivo val = new ValidacionIngresoEjecutivo(rut, password, confirmaPassword, usuario);
-                
-                if(val.existeRut(rut)){
-                    JOptionPane.showMessageDialog(null, "El rut ingresado ya esta registrado.");
+                int cont;
+                cont = 0;
+                for(int i = 0; i < apellido.length(); i++){
+                    char espacio;
+                    espacio = apellido.charAt(i);
+                    if (espacio == ' '){
+                        cont = cont + 1;
+                    }
                 }
-                else if(val.passSonIguales(password, confirmaPassword)){
-                    JOptionPane.showMessageDialog(null, "Los passwords ingresados no son iguales.");
+                if( cont < 1 ){
+                    if( !"".equals(mensaje) ){
+                        mensaje = mensaje + " ";
+                    }
+                    mensaje = mensaje + "Debe ingresar al menos dos apellidos.";
                 }
-                else if(val.existeUsuario(usuario)){
-                    JOptionPane.showMessageDialog(null, "El usuario ingresado ya existe, escoja otro.");
+                if( rut.length() != 8 ){
+                    if( !"".equals(mensaje) ){
+                        mensaje = mensaje + " ";
+                    }
+                    mensaje = mensaje + "Debe ingresar 8 digitos en el rut.";
+                }
+                if( password.length() < 3 ){
+                    if( !"".equals(mensaje) ){
+                        mensaje = mensaje + " ";
+                    }
+                    mensaje = mensaje + "El password debe tener al menos 4 letras.";
+                }
+                if( confirmaPassword.length() < 3 ){
+                    if( !"".equals(mensaje) ){
+                        mensaje = mensaje + " ";
+                    }
+                    mensaje = mensaje + "La confirmación del password debe tener al menos 4 letras.";
+                }
+                if ( !"".equals(mensaje) ){
+                    JOptionPane.showMessageDialog(null, mensaje);
                 }
                 else{
-                    
-                    Ejecutivo ejecutivoNuevo = new Ejecutivo(rut, dv, nombre, apellido, usuario, password);
-                    ejecutivoNuevo.agregarEjecutivoFormulario(rut, dv, nombre, apellido, usuario, password);
-                    //add(txtCorreo);
-                    txtCorreo.setText(val.mostrarCorreo(rut, nombre, apellido));
-                    txtCorreo.setVisible(true);
-                    txtCorreo.setEditable(false);
-                    lblCorreo.setText("Correo");
-                    this.revalidate();
-                    this.repaint();
+                    digito = ValidacionIngresoEjecutivo.crearDigito(rut);
+
+                    // crear Usuario
+                    usuario = ValidacionIngresoEjecutivo.crearUsuario(nombre, apellido);
+                    txtUsuario.setText(usuario);
+
+                    ValidacionIngresoEjecutivo val = new ValidacionIngresoEjecutivo(rut, password, confirmaPassword, usuario);
+
+                    if(val.existeRut(rut)){
+                        JOptionPane.showMessageDialog(null, "El rut ingresado ya esta registrado.");
+                    }
+                    else if(val.passSonIguales(password, confirmaPassword)){
+                        JOptionPane.showMessageDialog(null, "Los passwords ingresados no son iguales.");
+                    }
+                    else if(val.existeUsuario(usuario)){
+                        JOptionPane.showMessageDialog(null, "El usuario ingresado ya existe, escoja otro.");
+                    }
+                    else{
+                        int guardar = JOptionPane.showConfirmDialog(null , "Esta seguro", "Confirmar guardar", JOptionPane.YES_NO_CANCEL_OPTION);
+                        if(guardar == JOptionPane.OK_OPTION){
+                            char dv = digito.charAt(0);
+                            Ejecutivo ejecutivoNuevo;
+                            ejecutivoNuevo = new Ejecutivo(rut, dv, nombre, apellido, usuario, password);
+                            ejecutivoNuevo.agregarEjecutivoFormulario(rut, dv, nombre, apellido, usuario, password);
+                            //add(txtCorreo);
+                            txtCorreo.setText(val.mostrarCorreo(rut, nombre, apellido));
+                            txtCorreo.setVisible(true);
+                            txtCorreo.setEditable(false);
+                            lblCorreo.setText("Correo");
+                            this.revalidate();
+                            this.repaint();
+                        }
+                    }
                 }
             }
         } catch (PersonaException ex) {
@@ -319,6 +375,23 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
         car = cadena.charAt(0);
         evt.setKeyChar(car);
     }//GEN-LAST:event_txtApellidoKeyTyped
+
+    private void txtRutKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutKeyTyped
+        char car = evt.getKeyChar();
+        if(!Character.isDigit(car)) { 
+              getToolkit().beep(); 
+              evt.consume();   
+              txtRut.setText(""); 
+          } 
+    }//GEN-LAST:event_txtRutKeyTyped
+
+    private void txtRutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRutFocusLost
+        // crear Digito Verificador
+        String rut = txtRut.getText().trim();
+        String digito;
+        digito = ValidacionIngresoEjecutivo.crearDigito(rut);
+        txtDv.setText(digito);
+    }//GEN-LAST:event_txtRutFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
