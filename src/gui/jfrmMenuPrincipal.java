@@ -38,6 +38,7 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
         btnRegistros = new javax.swing.JMenu();
         btnAdministrcion = new javax.swing.JMenu();
         btnIngresoEjecutivo = new javax.swing.JMenuItem();
+        btnListarEjecutivo = new javax.swing.JMenuItem();
         btnAyuda = new javax.swing.JMenu();
         btnCerrar = new javax.swing.JMenuItem();
 
@@ -85,6 +86,15 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
         });
         btnAdministrcion.add(btnIngresoEjecutivo);
 
+        btnListarEjecutivo.setText("Listar Ejecutivo");
+        btnListarEjecutivo.setBorderPainted(true);
+        btnListarEjecutivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarEjecutivoActionPerformed(evt);
+            }
+        });
+        btnAdministrcion.add(btnListarEjecutivo);
+
         jMenuBarPrincipal.add(btnAdministrcion);
 
         btnAyuda.setText("Ayuda");
@@ -126,6 +136,11 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         cambioPanel(new jPanelIngresoVehiculo());
     }//GEN-LAST:event_btnVentaActionPerformed
+
+    private void btnListarEjecutivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEjecutivoActionPerformed
+        // TODO add your handling code here:
+        cambioPanel(new jPanelListarEjecutivo());
+    }//GEN-LAST:event_btnListarEjecutivoActionPerformed
 
     public void cambioPanel(JPanel panel){
         jPanelPrincipal.removeAll();
@@ -175,6 +190,7 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu btnAyuda;
     private javax.swing.JMenuItem btnCerrar;
     private javax.swing.JMenuItem btnIngresoEjecutivo;
+    private javax.swing.JMenuItem btnListarEjecutivo;
     private javax.swing.JMenu btnRegistros;
     private javax.swing.JMenuItem btnVenta;
     private javax.swing.JMenu btnVentas;

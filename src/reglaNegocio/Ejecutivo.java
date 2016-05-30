@@ -3,7 +3,10 @@ package reglaNegocio;
 
 import enumeraciones.Rol;
 import excepciones.PersonaException;
+import gui.jfrmLogin;
 import static gui.jfrmLogin.contenedor;
+import static gui.jfrmLogin.txtPassword;
+import static gui.jfrmLogin.txtUsuario;
 import java.util.Iterator;
 
 /**
@@ -73,10 +76,11 @@ public class Ejecutivo extends Persona {
      * @param password
      * @param sucursal
      * @param rol
+     * @param obsoleto
      * @param esAdmin
      * @throws PersonaException
      */
-    public Ejecutivo(String rut, char dv, String nombre, String apellido, String usuario, String password, String sucursal, Rol rol, boolean esAdmin) throws PersonaException {
+    public Ejecutivo(String rut, char dv, String nombre, String apellido, String usuario, String password, String sucursal, Rol rol, boolean obsoleto ) throws PersonaException {
         setRut( rut );
         setDv( dv );
         setNombre( nombre );
@@ -85,8 +89,8 @@ public class Ejecutivo extends Persona {
         setPassword( password );
         setSucursal( sucursal );
         setRol( rol );
-        setEsAdmin( esAdmin );
-        setObsoleto( false );
+        setEsAdmin( true );
+        setObsoleto( obsoleto );
     }
     
 
@@ -110,7 +114,7 @@ public class Ejecutivo extends Persona {
      * Mutador para obsoleto
      * @param obsoleto 
      */
-    private void setObsoleto(boolean obsoleto) {
+    public void setObsoleto(boolean obsoleto) {
         this.obsoleto = obsoleto;
     }
     
@@ -138,8 +142,8 @@ public class Ejecutivo extends Persona {
             Ejecutivo ejecutivoTmp;
             ejecutivoTmp = (Ejecutivo)existe.next();
             
-            if(getUsuario().equals(ejecutivoTmp.getUsuario())
-                    && getPassword().equals(ejecutivoTmp.getPassword())
+            if(txtUsuario.getText().equals(ejecutivoTmp.getUsuario())
+                    && txtPassword.getText().equals(ejecutivoTmp.getPassword())
                     && ejecutivoTmp.getObsoleto() == false){
                 retorno =  true;
                 break;
