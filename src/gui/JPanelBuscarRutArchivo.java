@@ -4,10 +4,19 @@
  * and open the template in the editor.
  */
 package gui;
-
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
- *
- * @author KTY
+ * Panel JPanelBuscarRutArchivo
+ * 
+ * @author Katherine Nussbaum - Rodrigo Vergara
+ * @version 3.0 ==> 29-05-2016 
  */
 public class JPanelBuscarRutArchivo extends javax.swing.JPanel {
 
@@ -36,6 +45,11 @@ public class JPanelBuscarRutArchivo extends javax.swing.JPanel {
         lblRut.setText("Rut:");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         txtAreaDatos.setColumns(20);
         txtAreaDatos.setRows(5);
@@ -71,6 +85,38 @@ public class JPanelBuscarRutArchivo extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String rut =  txtRut.getText().trim();
+        if("".equals(rut) || rut == null || rut.length() != 8){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un rut válid de 8 digitos.");
+        }
+        else{
+           File f = new File("src/archivosEjecutivos", rut + ".txt");
+        if(!f.exists()){
+            JOptionPane.showMessageDialog(null, "Rut ingresado sin archivo asociado.");
+        }
+        else {
+            BufferedReader lectura = null;
+            try {
+                lectura = new BufferedReader(new FileReader(f));
+                // String s, s2 = new String();
+                txtAreaDatos.setText(lectura.readLine());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(JPanelBuscarRutArchivo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(JPanelBuscarRutArchivo.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    lectura.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(JPanelBuscarRutArchivo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } 
+        }
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
