@@ -2,6 +2,7 @@
 package gui;
 
 import excepciones.PersonaException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -347,6 +348,8 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
                 }
             }
         } catch (PersonaException ex) {
+            Logger.getLogger(jPanelIngresoEjecutivo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(jPanelIngresoEjecutivo.class.getName()).log(Level.SEVERE, null, ex);
         }
         

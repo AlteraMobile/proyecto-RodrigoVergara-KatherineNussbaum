@@ -7,18 +7,24 @@ import gui.jfrmLogin;
 import static gui.jfrmLogin.contenedor;
 import static gui.jfrmLogin.txtPassword;
 import static gui.jfrmLogin.txtUsuario;
+import java.io.BufferedWriter;
 import java.util.Iterator;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  * Clase Ejecutivo 
  * 
  * @author Katherine Nussbaum - Rodrigo Vergara
- * @version 1.0 ==> 07-05-2016 
+ * @version 3.0 ==> 02-06-2016 
  */
 public class Ejecutivo extends Persona {
 
     private boolean obsoleto;
     private String sucursal;
+    private String cadena;
 
     /**
      * Constructor para Ejecutivo sin parámetros
@@ -190,9 +196,61 @@ public class Ejecutivo extends Persona {
      * @param usuario
      * @param password
      * @throws PersonaException
+     * @throws java.io.IOException
      */
-    public void agregarEjecutivoFormulario(String rut, char dv, String nombre, String apellido, String usuario, String password) throws PersonaException{
+    public void agregarEjecutivoFormulario(String rut, char dv, String nombre, String apellido, String usuario, String password) throws PersonaException, IOException{
         contenedor.agregarEjecutivo(rut, dv, nombre, apellido, usuario, password);
+        
+        // crear carpeta archivosEjecutivos si es que no existe
+        crearArchivo(rut);
+        escribirArchivo(rut, dv, nombre, apellido, usuario, password);
     }
+    
+     /**
+     * Revisar si carpeta existe, sino crea carpeta archivosEjecutivos
+     * 
+     * @param rut
+     * 
+     * @throws java.io.IOException
+     */
+
+    public void crearArchivo(String rut) throws IOException{
+        try{
+            File ruta = new File("src/archivosEjecutivos");
+            File f = new File(ruta, rut + ".txt");
+            if (!f.exists()) {
+                if (!ruta.exists()) {
+                    if (ruta.mkdir()) {
+                        if (f.createNewFile()) {
+                            JOptionPane.showMessageDialog(null, "Archivo creado correctamente.");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ocurrio un error, no se pudo crear el archvio.");
+                    }
+                } else {
+                    if (!f.createNewFile()) {
+                        JOptionPane.showMessageDialog(null, "Ocurrio un error, no se pudo crear la carpeta.");
+                    }
+                }
+            } else { 
+                JOptionPane.showMessageDialog(null, "Error, este archivo ya existe.");
+            }
+        }
+        catch(IOException ex){
+            throw new IOException("Ocurrio un error al crear el archivo.");
+        }
+    }
+
+    public void escribirArchivo(String rut, char dv, String nombre, String apellido, String usuario, String password) throws IOException{
+        try (
+            BufferedWriter escritura = new BufferedWriter(new FileWriter("src/archivosEjecutivos/" + rut + ".txt"))) {
+            escritura.write("Rut: " + rut + "-" + dv + ", Nombre: " + nombre + ", Apellidos: " + apellido + ", Usuario: " + usuario + ", Password: " + password);
+            escritura.flush();
+        } 
+        catch(IOException ex) {
+            throw new IOException("Ocurrio un error al escribir el archivo.");
+        }
+    }
+    
 
 }
