@@ -39,10 +39,10 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
         btnAdministrcion = new javax.swing.JMenu();
         btnIngresoEjecutivo = new javax.swing.JMenuItem();
         btnListarEjecutivo = new javax.swing.JMenuItem();
-        btnAyuda = new javax.swing.JMenu();
-        btnCerrar = new javax.swing.JMenuItem();
         btnArchivos = new javax.swing.JMenu();
         btnBuscarEjecutivo = new javax.swing.JMenuItem();
+        btnAyuda = new javax.swing.JMenu();
+        btnCerrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(248, 248, 248));
@@ -99,18 +99,6 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
 
         jMenuBarPrincipal.add(btnAdministrcion);
 
-        btnAyuda.setText("Ayuda");
-
-        btnCerrar.setText("Cerrar");
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
-            }
-        });
-        btnAyuda.add(btnCerrar);
-
-        jMenuBarPrincipal.add(btnAyuda);
-
         btnArchivos.setText("Archivos");
 
         btnBuscarEjecutivo.setText("Buscar Ejecutivo");
@@ -122,6 +110,18 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
         btnArchivos.add(btnBuscarEjecutivo);
 
         jMenuBarPrincipal.add(btnArchivos);
+
+        btnAyuda.setText("Ayuda");
+
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        btnAyuda.add(btnCerrar);
+
+        jMenuBarPrincipal.add(btnAyuda);
 
         setJMenuBar(jMenuBarPrincipal);
 

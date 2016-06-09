@@ -89,7 +89,7 @@ public class JPanelBuscarRutArchivo extends javax.swing.JPanel {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String rut =  txtRut.getText().trim();
         if("".equals(rut) || rut == null || rut.length() != 8){
-            JOptionPane.showMessageDialog(null, "Debe ingresar un rut válid de 8 digitos.");
+            JOptionPane.showMessageDialog(null, "Debe ingresar un rut válido de 8 digitos.");
         }
         else{
            File f = new File("src/archivosEjecutivos", rut + ".txt");

@@ -363,6 +363,7 @@ public class jPanelIngresoEjecutivo extends javax.swing.JPanel {
         txtUsuario.setText(null);
         txtPassword.setText(null);
         txtConfirmaPassword.setText(null);
+        txtCorreo.setText(null);
     }//GEN-LAST:event_btnLimpiarNuevoEjecutivoActionPerformed
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
