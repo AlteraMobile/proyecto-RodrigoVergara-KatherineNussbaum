@@ -41,6 +41,8 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
         btnListarEjecutivo = new javax.swing.JMenuItem();
         btnAyuda = new javax.swing.JMenu();
         btnCerrar = new javax.swing.JMenuItem();
+        btnArchivos = new javax.swing.JMenu();
+        btnBuscarEjecutivo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(248, 248, 248));
@@ -109,6 +111,18 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
 
         jMenuBarPrincipal.add(btnAyuda);
 
+        btnArchivos.setText("Archivos");
+
+        btnBuscarEjecutivo.setText("Buscar Ejecutivo");
+        btnBuscarEjecutivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarEjecutivoActionPerformed(evt);
+            }
+        });
+        btnArchivos.add(btnBuscarEjecutivo);
+
+        jMenuBarPrincipal.add(btnArchivos);
+
         setJMenuBar(jMenuBarPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -133,14 +147,16 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresoEjecutivoActionPerformed
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
-        // TODO add your handling code here:
         cambioPanel(new jPanelIngresoVehiculo());
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnListarEjecutivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEjecutivoActionPerformed
-        // TODO add your handling code here:
         cambioPanel(new jPanelListarEjecutivo());
     }//GEN-LAST:event_btnListarEjecutivoActionPerformed
+
+    private void btnBuscarEjecutivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEjecutivoActionPerformed
+        cambioPanel(new JPanelBuscarRutArchivo());
+    }//GEN-LAST:event_btnBuscarEjecutivoActionPerformed
 
     public void cambioPanel(JPanel panel){
         jPanelPrincipal.removeAll();
@@ -187,7 +203,9 @@ public class jfrmMenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu btnAdministrcion;
+    private javax.swing.JMenu btnArchivos;
     private javax.swing.JMenu btnAyuda;
+    private javax.swing.JMenuItem btnBuscarEjecutivo;
     private javax.swing.JMenuItem btnCerrar;
     private javax.swing.JMenuItem btnIngresoEjecutivo;
     private javax.swing.JMenuItem btnListarEjecutivo;
